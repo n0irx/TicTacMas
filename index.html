@@ -7,19 +7,32 @@
 <body>
   <img class="pohon-1" src="dist/assets/pohon-1.png"/>
   <img class="pohon-2" src="dist/assets/pohon-2.png"/>
-	<div class="landingContainer">
+	<div class="landing-container">
     <img class="logo" src="dist/assets/tictacmas_logo.png"/>
-		<select id="starting">
-			<option value="1">Human</option>
-			<option value="0">Computer</option>
-		</select>
-		<select id="depth">
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-			<option value="4">4</option>
-			<option value="-1">Unlimited</option>
-		</select>
+    <div class="row">
+      <div class="left">
+        <p>Pemain Pertama:</p>
+      </div>
+      <div class="right">
+        <select id="player">
+          <option value="1">Timun Mas</option>
+          <option value="0">Raksasa</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="left">
+        <p>Ukuran Board:</p>
+      </div>
+      <div class="right">
+        <select id="size">
+          <option value="1">3 x 3</option>
+          <option value="2">4 x 4</option>
+          <option value="3">5 x 5</option>
+        </select>
+      </div>
+    </div>
+    <button class="start">Mulai Permainan!</button>
   </div>
   <img class="semak-1" src="dist/assets/semak-1.png"/>
   <img class="semak-2" src="dist/assets/semak-2.png"/>
