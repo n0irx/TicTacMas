@@ -1,0 +1,48 @@
+body {
+  background-color: #0D442D;
+}
+
+.landingContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.logo {
+  width: 40vw;
+}
+
+.pohon-1 {
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 47vw;
+}
+
+.pohon-2 {
+  z-index: -1;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 48vw;
+}
+
+.semak-1 {
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 65vw;
+}
+
+.semak-2 {
+  z-index: -1;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 60vw;
+}
