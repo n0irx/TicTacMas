@@ -1,44 +1,39 @@
-.judul{
+.judul-tentang{
     width: 100%;
     color: #FFB13F;
-    font-size: 5vw;
+    font-size: 4vw;
     font-weight: bold;
+    padding-left: 10vw;
     margin-top: 20vw;
-    text-align: center;
+    text-align: left;
 }
 
-.sumber{
-    width: 100%;
-    color: #FFB13F;
-    font-size: 1.2vw;
-    text-align: center;
+.tentang{
+    width: 95%;
+    padding-left: 11vw;
 }
 
-.tanda-tanya{
-    position: fixed;
-    right: 0;
-    top: 0;
-    margin-top: 3vh;
-    margin-right: 3vw;
-    width: 3vw;
-}
-.dongeng{
-    font-size: 1.5rem;
-    margin-top: 4vw;
-    margin-left: 16vw;
-    margin-right: 17vw;
-    text-align: center;
+.penjelasan-tentang{
+    font-size: 1rem;
+    margin-top: 1vw;
+    text-align: left;
 }
 
-.judulmodal{
-    color: #FFB13F;
-    font-size: 2vw;
-    font-weight: bold;
-    margin-top: 2vw;
+.raksasa-about {
+    width: 25vw;
 }
 
-
-.buatmodal{
-    margin-top: 5vw;
-    text-align: center;
-}
+.button-story {
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    width: 20vw;
+    background-color: #FFB13F;
+    cursor: pointer;
+  }
+  
+  .button-story:hover {
+    background-color: #F08732;
+  }
