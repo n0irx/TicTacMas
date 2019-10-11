@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>TicTacMas</title>
-	<link rel="stylesheet" type="text/css" href="dist/style.css">
+  <title>TicTacMas</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="dist/css/style.css">
 </head>
 <body>
   <img class="pohon-1" src="dist/assets/pohon-1.png"/>
   <img class="pohon-2" src="dist/assets/pohon-2.png"/>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <button id="button"><i class="icon fa fa-question"></i></button>
+    <button id="button"><i class="icon fa fa-gamepad"></i></button>
+  </div>
+
+  <!-- MODAL -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h1 class="judulhowto">CARA BERMAIN</h1>
+      <hr class="garis">
+      <div class="howto">
+        <p class="howto"><span class="bold">1. Pilih papannya.</span> Pertama, Anda harus milih papan permainannya, yang terdiri dari petak-petak persegi 3 x 3, 4 x 4, atau 5 x 5.</p>
+        <p class="howto"><span class="bold">2. Biarkan pemain pertama bermain terlebih dulu.</span> Meskipun tradisionalnya, pemain pertama bermain dengan “X”, Anda dapat mengizinkan pemain pertama menentukan apakah dia ingin memainkan “X” atau “O”. Simbol-simbol ini akan digambar pada tabel, dalam usaha untuk menggambar tiga simbol yang sama dalam satu deret. Jika Anda menjadi pemain pertama, “langkah terbaik yang dapat Anda lakukan adalah menggambar simbol Anda di kotak tengah.” Ini akan memaksimalkan peluang Anda untuk menang, karena Anda akan dapat membuat sederet tiga “X” atau “O” dalam lebih banyak kombinasi (4) dengan cara ini daripada jika Anda memilih kotak yang berbeda.</p>
+        <p class="howto"><span class="bold">3. Selanjutnya, giliran pemain kedua bermain.</span> Setelah pemain pertama menggambar simbol, pemain kedua harus menggambar simbolnya, yang akan berbeda dari simbol yang digunakan oleh pemain pertama. Pemain kedua dapat berusaha memblokir pemain pertama membuat tiga simbol dalam satu deret, atau fokus pada pembuatan tiga simbol dalam satu deretnya sendiri. Idealnya, seorang pemain dapat melakukan keduanya secara bersamaan.</p>
+        <p class="howto"><span class="bold">4. Teruslah bergiliran menggambar simbol masing-masing sampai salah satu pemain telah menggambar tiga simbol dalam satu deret atau sampai tidak ada pemain yang dapat menang.</span> Pemain yang pertama kali menggambar tiga simbolnya dalam satu deret, entah secara horizontal, vertikal, ataupun diagonal, menjadi pemenang permainan. Namun, jika kedua pemain menggunakan strategi optimal, kemungkinan besar tidak akan ada pemenang karena kalian akan saling memblokir kesempatan masing-masing untuk membuat tiga simbol dalam satu deret.</p>
+        <p class="howto"><span class="bold">5. Teruslah berlatih. Berlawanan dengan kepercayaan umum, tic-tac-toe bukanlah sepenuhnya permainan peluang.</span> Ada beberapa strategi yang dapat membantu Anda mengoptimalkan kemampuan Anda dan membuat Anda menjadi pemain tic-tac-toe yang ahli. Jika Anda terus bermain, Anda akan segera mempelajari semua trik untuk memastikan Anda memenangkan setiap permainan — atau, setidaknya, Anda akan mempelajari trik-trik untuk memastikan Anda tidak pernah kalah.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
 	<div class="landing-container">
     <img class="logo" src="dist/assets/tictacmas_logo.png"/>
     <div class="row">
@@ -22,7 +47,7 @@
     </div>
     <div class="row">
       <div class="left">
-        <p>Ukuran Board:</p>
+        <p>Ukuran Papan:</p>
       </div>
       <div class="right">
         <select id="size">
@@ -36,6 +61,32 @@
   </div>
   <img class="semak-1" src="dist/assets/semak-1.png"/>
   <img class="semak-2" src="dist/assets/semak-2.png"/>
-	<script type="text/javascript" src="dist/bundle.js"></script>
 </body>
+<script>
+  // Get the modal
+  var modal = document.getElementById("modal");
+
+  // Get the button that opens the modal
+  var btn = document.getElementById("button");
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // When the user clicks the button, open the modal
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+  </script>
 </html>
