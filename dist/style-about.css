@@ -1,9 +1,16 @@
 .judul{
     width: 100%;
     color: #FFB13F;
-    font-size: 4vw;
+    font-size: 5vw;
     font-weight: bold;
     margin-top: 20vw;
+    text-align: center;
+}
+
+.sumber{
+    width: 100%;
+    color: #FFB13F;
+    font-size: 1.2vw;
     text-align: center;
 }
 
@@ -17,7 +24,7 @@
 }
 .dongeng{
     font-size: 1.5rem;
-    margin-top: 2vw;
+    margin-top: 4vw;
     margin-left: 16vw;
     margin-right: 17vw;
     text-align: center;
