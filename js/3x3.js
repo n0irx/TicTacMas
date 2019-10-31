@@ -22,7 +22,7 @@ playerImg.src = './assets/images/O.png'
 aiImg.src = './assets/images/X.png'
 blank.src = './assets/images/blank.png'
 
-function newGame() {
+function newboard() {
     for(let i = 0; i < BOARD_SIZE; i++) {
         board[i] = NOT_OCCUPIED;
         document.images[i].src = blank.src;
@@ -38,37 +38,37 @@ function newGame() {
 //   1 if it's a tie
 //   2 if TIMUN MAS MENANG
 //   3 if BUTO IJO MENANG
-function checkWinningCondition(game) {
+function checkWinningCondition(board) {
 
     // checking for horizontal conditions
     for(i = 0; i <= 6; i += 3) {
-        if(game[i] === TIMUN_MAS && game[i+1] === TIMUN_MAS && game[i+2] === TIMUN_MAS) 
+        if(board[i] === TIMUN_MAS && board[i+1] === TIMUN_MAS && board[i+2] === TIMUN_MAS) 
             return 2;
-        if(game[i] === BUTO_IJO && game[i+1] === BUTO_IJO && game[i+2] === BUTO_IJO) 
+        if(board[i] === BUTO_IJO && board[i+1] === BUTO_IJO && board[i+2] === BUTO_IJO) 
             return 3;
     }
 
     // checking for vertical conditions
     for(i=0; i <= 2; i++) {
-        if(game[i] === TIMUN_MAS && game[i+3] === TIMUN_MAS && game[i+6] === TIMUN_MAS) 
+        if(board[i] === TIMUN_MAS && board[i+3] === TIMUN_MAS && board[i+6] === TIMUN_MAS) 
             return 2;
         
-        if(game[i] === BUTO_IJO && game[i+1] === BUTO_IJO && game[i+2] === BUTO_IJO) 
+        if(board[i] === BUTO_IJO && board[i+3] === BUTO_IJO && board[i+6] === BUTO_IJO) 
             return 3;
     }
 
 
     // checking for diagonal condition
-    if((game[0] === TIMUN_MAS && game[4] === TIMUN_MAS && game[8] === TIMUN_MAS) ||
-            (game[2] === TIMUN_MAS && game[4] === TIMUN_MAS && game[6] === TIMUN_MAS))
+    if((board[0] === TIMUN_MAS && board[4] === TIMUN_MAS && board[8] === TIMUN_MAS) ||
+            (board[2] === TIMUN_MAS && board[4] === TIMUN_MAS && board[6] === TIMUN_MAS))
         return 2;
 
-    if((game[0] === BUTO_IJO && game[4] === BUTO_IJO && game[8] === BUTO_IJO) ||
-            (game[2] === BUTO_IJO && game[4] === BUTO_IJO && game[6] === BUTO_IJO))
+    if((board[0] === BUTO_IJO && board[4] === BUTO_IJO && board[8] === BUTO_IJO) ||
+            (board[2] === BUTO_IJO && board[4] === BUTO_IJO && board[6] === BUTO_IJO))
         return 3;
 
     for(i = 0; i < BOARD_SIZE; i++) {
-        if(game[i] !== TIMUN_MAS && game[i] !== BUTO_IJO) {
+        if(board[i] !== TIMUN_MAS && board[i] !== BUTO_IJO) {
             return 0;
         }
     }
@@ -83,13 +83,13 @@ function checkWinningCondition(game) {
 //   1 if it's a tie
 //   2 if HUMAN_PLAYER won
 //   3 if COMPUTER_PLAYER won
-function gameOver(game) {
-    if(checkWinningCondition(game) == 0) {
+function isGameOver(board) {
+    if(checkWinningCondition(board) == 0) {
         return false 
-    } else if(checkWinningCondition(game) == 1) {
+    } else if(checkWinningCondition(board) == 1) {
         var turnInfo = document.getElementById("turnInfo");
         turnInfo.innerHTML = messages[1];
-    } else if(checkWinningCondition(game) == 2) {
+    } else if(checkWinningCondition(board) == 2) {
         var turnInfo = document.getElementById("turnInfo");
         turnInfo.innerHTML = messages[2];
     } else {
