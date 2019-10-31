@@ -15,19 +15,19 @@ let messages = ["Permainan belum selesai",
 let timunMasImg = new Image()
 let butoIjoImg = new Image()
 
-timunMasImg.src = './assets/images/O.png'
-butoIjoImg.src = './assets/images/X.png'
-blank.src = './assets/images/blank.png'
+timunMasImg.src = './images/O.png'
+butoIjoImg.src = './images/X.png'
+blank_src = './images/blank.png'
 
 function newboard() {
     for(let i = 0; i < BOARD_SIZE; i++) {
         board[i] = NOT_OCCUPIED;
-        document.images[i].src = blank.src;
+        document.images[i].src = blank_src;
     }
 
     var turnInfo = document.getElementById("turnInfo");
     active_turn = "TIMUN_MAS";
-    alert.innerHTML = 'Mongoooo.....';
+    turnInfo.innerHTML = 'Mongoooo.....';
 }
 
 function makeMove(pieceMove) {
@@ -67,6 +67,43 @@ function gameScore(currentBoard, depth) {
     }
 }
 
+function minimax(node, depth) {
+    if(checkWinningCondition(node) === 1 || 
+        checkWinningCondition(node) === 2 ||
+        checkWinningCondition(node) === 3) 
+    {
+        return gameScore(node, depth);
+    }
+
+    // the deeper the recursion, the higher the depths
+    depth += 1;
+
+    var availableMoves = getAvailableMoves(node);
+    var move, result, possibleGameResult;
+
+    if(active_turn === "BUTO_IJO") {
+        for(var i = 0; i < availableMoves; i++) {
+            move = availableMoves[i];
+            possibleGameResult = getNewState(move, node);
+            result = minimax(possibleGameResult, depth);
+            node = undoMove(node, move);
+        }
+        return result;
+    } else {
+            move = availableMoves[i];
+            possibleGameResult = getNewState(move, node);
+            result = minimax(possibleGameResult, depth);
+            node = undoMove(node, move);
+    }
+    return result;
+}
+
+function undoMove(currentBoard, move) {
+    currentBoard[move] = NOT_OCCUPIED;
+    changeTurn();
+    return currentBoard;
+}
+
 function getNewState(move, board) {
     var piece = changeTurn();
     board[move] = piece;
@@ -87,7 +124,7 @@ function changeTurn() {
 
 function getAvailableMoves(currentBoard) {
     var possibleMoves = new Array();
-    for(var i=0; i < currentBoard_SIZE; i++) {
+    for(var i=0; i < BOARD_SIZE; i++) {
         if(currentBoard[i] == NOT_OCCUPIED) {
             possibleMoves.push(i);
         }
@@ -129,7 +166,7 @@ function checkWinningCondition(currentBoard) {
             (currentBoard[2] === BUTO_IJO && currentBoard[4] === BUTO_IJO && currentBoard[6] === BUTO_IJO))
         return 3;
 
-    for(i = 0; i < currentBoard_SIZE; i++) {
+    for(i = 0; i < BOARD_SIZE; i++) {
         if(currentBoard[i] !== TIMUN_MAS && currentBoard[i] !== BUTO_IJO) {
             return 0;
         }
