@@ -1,25 +1,22 @@
 // board setting
-let playerImg = new Image()
-let aiImg = new Image()
 let BLANK = new Image()
-let board = new Array()
-
 let BOARD_SIZE = 9;
 let NOT_OCCUPIED = ' ';
 let TIMUN_MAS = 'O';
 let BUTO_IJO = 'X';
 
+let board = new Array()
+let choice;
+let active_turn = "TIMUN_MAS";
 let messages = ["Permainan belum selesai", 
                 "Permainan seri, timun mas belum bisa kabur dari Buto Ijo",
                 "Horeee!! Timun Mas berhasil kabur dari Buto Ijo",
                 "HAHAHAHAHA!! sayang sekali, Buto Ijo berhasil menangkap Timun Mas"]
+let timunMasImg = new Image()
+let butoIjoImg = new Image()
 
-let active_turn = "TIMUN_MAS";
-let choice;
-let searchTimes = new Array();
-
-playerImg.src = './assets/images/O.png'
-aiImg.src = './assets/images/X.png'
+timunMasImg.src = './assets/images/O.png'
+butoIjoImg.src = './assets/images/X.png'
 blank.src = './assets/images/blank.png'
 
 function newboard() {
@@ -33,46 +30,110 @@ function newboard() {
     alert.innerHTML = 'Mongoooo.....';
 }
 
+function makeMove(pieceMove) {
+    if(!isGameOver(board) && board[pieceMove] === NOT_OCCUPIED) {
+        board[pieceMove] = TIMUN_MAS;
+        document.images[pieceMove].src = timunMasImg.src;
+        if(!isGameOver(board)) {
+            var alert = document.getElementById("turnInfo");
+            active_turn = "BUTO_IJO";
+            alert.innerHTML = "Bagian Buto ijo Menyerang"
+        }
+    }
+}
+
+function moveButoIjo() {
+    alphaBetaMinimax(board, 0, -Infinity, +Infinity);
+
+    var move = choice;
+    board[move] = BUTO_IJO;
+    document.images[move].src = butoIjoImg.src;
+    choice = [];
+    active_turn = "TIMUN_MAS"
+    if(!isGameOver(board)) {
+        var alert = document.getElementById("turnInfo");
+        alert.innerHTML = "Timun mas, pikirkan strategi baik untuk kabur";
+    }
+}
+
+function gameScore(currentBoard, depth) {
+    var score = checkWinningCondition(currentBoard);
+    if(score === 1) {
+        return 0;
+    } else if (score === 2) {
+        return depth - 10;
+    } else if (score === 3) {
+        return 10 - depth;
+    }
+}
+
+function getNewState(move, board) {
+    var piece = changeTurn();
+    board[move] = piece;
+    return board;
+}
+
+function changeTurn() {
+    var piece;
+    if(active_turn == "COMPUTER") {
+        piece = 'X';
+        active_turn = "TIMUN_MAS";
+    } else {
+        piece = 'O';
+        active_turn = 'BUTO_IJO';
+    }
+    return piece;
+}
+
+function getAvailableMoves(currentBoard) {
+    var possibleMoves = new Array();
+    for(var i=0; i < currentBoard_SIZE; i++) {
+        if(currentBoard[i] == NOT_OCCUPIED) {
+            possibleMoves.push(i);
+        }
+    }
+    return possibleMoves;
+}
+
 // Check for a winner.  Return
 //   0 if no winner or tie yet
 //   1 if it's a tie
 //   2 if TIMUN MAS MENANG
 //   3 if BUTO IJO MENANG
-function checkWinningCondition(board) {
+function checkWinningCondition(currentBoard) {
 
     // checking for horizontal conditions
     for(i = 0; i <= 6; i += 3) {
-        if(board[i] === TIMUN_MAS && board[i+1] === TIMUN_MAS && board[i+2] === TIMUN_MAS) 
+        if(currentBoard[i] === TIMUN_MAS && currentBoard[i+1] === TIMUN_MAS && currentBoard[i+2] === TIMUN_MAS) 
             return 2;
-        if(board[i] === BUTO_IJO && board[i+1] === BUTO_IJO && board[i+2] === BUTO_IJO) 
+        if(currentBoard[i] === BUTO_IJO && currentBoard[i+1] === BUTO_IJO && currentBoard[i+2] === BUTO_IJO) 
             return 3;
     }
 
     // checking for vertical conditions
     for(i=0; i <= 2; i++) {
-        if(board[i] === TIMUN_MAS && board[i+3] === TIMUN_MAS && board[i+6] === TIMUN_MAS) 
+        if(currentBoard[i] === TIMUN_MAS && currentBoard[i+3] === TIMUN_MAS && currentBoard[i+6] === TIMUN_MAS) 
             return 2;
         
-        if(board[i] === BUTO_IJO && board[i+3] === BUTO_IJO && board[i+6] === BUTO_IJO) 
+        if(currentBoard[i] === BUTO_IJO && currentBoard[i+3] === BUTO_IJO && currentBoard[i+6] === BUTO_IJO) 
             return 3;
     }
 
 
     // checking for diagonal condition
-    if((board[0] === TIMUN_MAS && board[4] === TIMUN_MAS && board[8] === TIMUN_MAS) ||
-            (board[2] === TIMUN_MAS && board[4] === TIMUN_MAS && board[6] === TIMUN_MAS))
+    if((currentBoard[0] === TIMUN_MAS && currentBoard[4] === TIMUN_MAS && currentBoard[8] === TIMUN_MAS) ||
+            (currentBoard[2] === TIMUN_MAS && currentBoard[4] === TIMUN_MAS && currentBoard[6] === TIMUN_MAS))
         return 2;
 
-    if((board[0] === BUTO_IJO && board[4] === BUTO_IJO && board[8] === BUTO_IJO) ||
-            (board[2] === BUTO_IJO && board[4] === BUTO_IJO && board[6] === BUTO_IJO))
+    if((currentBoard[0] === BUTO_IJO && currentBoard[4] === BUTO_IJO && currentBoard[8] === BUTO_IJO) ||
+            (currentBoard[2] === BUTO_IJO && currentBoard[4] === BUTO_IJO && currentBoard[6] === BUTO_IJO))
         return 3;
 
-    for(i = 0; i < BOARD_SIZE; i++) {
-        if(board[i] !== TIMUN_MAS && board[i] !== BUTO_IJO) {
+    for(i = 0; i < currentBoard_SIZE; i++) {
+        if(currentBoard[i] !== TIMUN_MAS && currentBoard[i] !== BUTO_IJO) {
             return 0;
         }
     }
-
     // it's a tie
     return 1;
 }
