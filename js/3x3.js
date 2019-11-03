@@ -49,7 +49,7 @@ function makeMove(pieceMove) {
 }
 
 function moveButoIjo() {
-    minimax(board, 0);
+    minimax(board, 0, -Infinity, +Infinity);
     var move = choice;
     board[move] = BUTO_IJO;
     document.images[move].src = butoIjoImgPath;
@@ -72,7 +72,7 @@ function gameScore(currentBoard, depth) {
     }
 }
 
-function minimax(node, depth) {
+function minimax(node, depth, alpha, beta) {
     if(checkWinningCondition(node) === 1 ||
         checkWinningCondition(node) === 2 ||
         checkWinningCondition(node) === 3)
@@ -83,39 +83,40 @@ function minimax(node, depth) {
     // the deeper the recursion, the higher the depths
     depth += 1;
 
-    let moves = []
-    let scores = []
-
     var availableMoves = getAvailableMoves(node);
     var move, result, possibleGameResult;
     if(active_turn === "BUTO_IJO") {
         for(var i = 0; i < availableMoves.length; i++) {
             move = availableMoves[i];
             possibleGameResult = getNewState(move, node);
-            result = minimax(possibleGameResult, depth);
-
-            scores.push(result)
-            moves.push(move)
-
+            result = minimax(possibleGameResult, depth, alpha, beta);
             node = undoMove(node, move);
-
-            choice = moves[scores.indexOf(Math.min(...scores))]
+            if(result > alpha) {
+                alpha = result
+                if(depth === 1) {
+                    choice = move
+                }
+            } else if (alpha >= beta)  {
+                return alpha;
+            }
         }
-        return result;
+        return alpha;
     } else {
         for(var i = 0; i < availableMoves.length; i++) {
             move = availableMoves[i];
             possibleGameResult = getNewState(move, node);
-            result = minimax(possibleGameResult, depth);
-
-            scores.push(result)
-            moves.push(move)
-
+            result = minimax(possibleGameResult, depth, alpha, beta);
             node = undoMove(node, move);
-
-            choice = moves[scores.indexOf(Math.max(...scores))]
+            if(result < beta) {
+                beta = result
+                if(depth === 1) {
+                    choice = move
+                } 
+            } else if (beta <= alpha) {
+                return beta;
+            }
         }
-        return result;
+        return beta;
     }
 }
 
@@ -125,15 +126,15 @@ function undoMove(currentBoard, move) {
     return currentBoard;
 }
 
-function getNewState(move, board) {
+function getNewState(move, currentBoard) {
     var piece = changeTurn();
-    board[move] = piece;
-    return board;
+    currentBoard[move] = piece;
+    return currentBoard;
 }
 
 function changeTurn() {
     var piece;
-    if(active_turn == "COMPUTER") {
+    if(active_turn === "BUTO_IJO") {
         piece = 'X';
         active_turn = "TIMUN_MAS";
     } else {
@@ -146,7 +147,7 @@ function changeTurn() {
 function getAvailableMoves(currentBoard) {
     var possibleMoves = new Array();
     for(var i=0; i < BOARD_SIZE; i++) {
-        if(currentBoard[i] == NOT_OCCUPIED) {
+        if(currentBoard[i] === NOT_OCCUPIED) {
             possibleMoves.push(i);
         }
     }
@@ -161,38 +162,38 @@ function getAvailableMoves(currentBoard) {
 function checkWinningCondition(currentBoard) {
 
     // checking for horizontal conditions
-    for(i = 0; i <= 6; i += 3) {
-        if(currentBoard[i] === TIMUN_MAS && currentBoard[i+1] === TIMUN_MAS && currentBoard[i+2] === TIMUN_MAS)
+    for (i = 0; i <= 6; i += 3)
+    {
+        if (currentBoard[i] === TIMUN_MAS && currentBoard[i + 1] === TIMUN_MAS && currentBoard[i + 2] === TIMUN_MAS)
             return 2;
-        if(currentBoard[i] === BUTO_IJO && currentBoard[i+1] === BUTO_IJO && currentBoard[i+2] === BUTO_IJO)
+        if (currentBoard[i] === BUTO_IJO && currentBoard[i + 1] === BUTO_IJO && currentBoard[i + 2] === BUTO_IJO)
             return 3;
     }
 
-    // checking for vertical conditions
-    for(i=0; i <= 2; i++) {
-        if(currentBoard[i] === TIMUN_MAS && currentBoard[i+3] === TIMUN_MAS && currentBoard[i+6] === TIMUN_MAS)
+    // Check for vertical wins
+    for (i = 0; i <= 2; i++)
+    {
+        if (currentBoard[i] === TIMUN_MAS && currentBoard[i + 3] === TIMUN_MAS && currentBoard[i + 6] === TIMUN_MAS)
             return 2;
-
-        if(currentBoard[i] === BUTO_IJO && currentBoard[i+3] === BUTO_IJO && currentBoard[i+6] === BUTO_IJO)
+        if (currentBoard[i] === BUTO_IJO && currentBoard[i + 3] === BUTO_IJO && currentBoard[i + 6] === BUTO_IJO)
             return 3;
     }
 
-
-    // checking for diagonal condition
-    if((currentBoard[0] === TIMUN_MAS && currentBoard[4] === TIMUN_MAS && currentBoard[8] === TIMUN_MAS) ||
+    // Check for diagonal wins
+    if ((currentBoard[0] === TIMUN_MAS && currentBoard[4] === TIMUN_MAS && currentBoard[8] === TIMUN_MAS) ||
             (currentBoard[2] === TIMUN_MAS && currentBoard[4] === TIMUN_MAS && currentBoard[6] === TIMUN_MAS))
         return 2;
 
-    if((currentBoard[0] === BUTO_IJO && currentBoard[4] === BUTO_IJO && currentBoard[8] === BUTO_IJO) ||
+    if ((currentBoard[0] === BUTO_IJO && currentBoard[4] === BUTO_IJO && currentBoard[8] === BUTO_IJO) ||
             (currentBoard[2] === BUTO_IJO && currentBoard[4] === BUTO_IJO && currentBoard[6] === BUTO_IJO))
         return 3;
 
-    for(i = 0; i < BOARD_SIZE; i++) {
-        if(currentBoard[i] !== TIMUN_MAS && currentBoard[i] !== BUTO_IJO) {
+    // Check for tie
+    for (i = 0; i < BOARD_SIZE; i++)
+    {
+        if (currentBoard[i] !== TIMUN_MAS && currentBoard[i] !== BUTO_IJO)
             return 0;
-        }
-    }
-    // it's a tie
+    }   
     return 1;
 }
 
@@ -203,12 +204,12 @@ function checkWinningCondition(currentBoard) {
 //   2 if TIMUN_MAS won
 //   3 if BUTO_IJO won
 function isGameOver(board) {
-    if(checkWinningCondition(board) == 0) {
+    if(checkWinningCondition(board) === 0) {
         return false
-    } else if(checkWinningCondition(board) == 1) {
+    } else if(checkWinningCondition(board) === 1) {
         var turnInfo = document.getElementById("turnInfo");
         turnInfo.innerHTML = messages[1];
-    } else if(checkWinningCondition(board) == 2) {
+    } else if(checkWinningCondition(board) === 2) {
         var turnInfo = document.getElementById("turnInfo");
         turnInfo.innerHTML = messages[2];
     } else {
