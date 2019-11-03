@@ -83,8 +83,8 @@ function minimax(node, depth) {
     // the deeper the recursion, the higher the depths
     depth += 1;
 
-    moves = []
-    scores = []
+    let moves = []
+    let scores = []
 
     var availableMoves = getAvailableMoves(node);
     var move, result, possibleGameResult;
@@ -113,7 +113,7 @@ function minimax(node, depth) {
 
             node = undoMove(node, move);
 
-            choice = moves[scores.indexOf(Math.min(...scores))]
+            choice = moves[scores.indexOf(Math.max(...scores))]
         }
         return result;
     }
@@ -200,8 +200,8 @@ function checkWinningCondition(currentBoard) {
 // Check for a winner.  Return
 //   0 if no winner or tie yet
 //   1 if it's a tie
-//   2 if HUMAN_PLAYER won
-//   3 if COMPUTER_PLAYER won
+//   2 if TIMUN_MAS won
+//   3 if BUTO_IJO won
 function isGameOver(board) {
     if(checkWinningCondition(board) == 0) {
         return false
