@@ -8,16 +8,21 @@ let BUTO_IJO = 'X';
 let board = new Array()
 let choice;
 let active_turn = "TIMUN_MAS";
-let messages = ["Permainan belum selesai", 
+let messages = ["Permainan belum selesai",
                 "Permainan seri, timun mas belum bisa kabur dari Buto Ijo",
                 "Horeee!! Timun Mas berhasil kabur dari Buto Ijo",
                 "HAHAHAHAHA!! sayang sekali, Buto Ijo berhasil menangkap Timun Mas"]
+
+let timunMasImgPath = './images/O.png';
+let butoIjoImgPath = './images/X.png';
+
 let timunMasImg = new Image()
 let butoIjoImg = new Image()
 
-timunMasImg.src = './images/O.png'
-butoIjoImg.src = './images/X.png'
-blank_src = './images/blank.png'
+let blank_src = './images/blank.png'
+
+timunMasImg.src = timunMasImgPath;
+butoIjoImg.src = butoIjoImgPath;
 
 function newboard() {
     for(let i = 0; i < BOARD_SIZE; i++) {
@@ -33,21 +38,21 @@ function newboard() {
 function makeMove(pieceMove) {
     if(!isGameOver(board) && board[pieceMove] === NOT_OCCUPIED) {
         board[pieceMove] = TIMUN_MAS;
-        document.images[pieceMove].src = timunMasImg.src;
+        document.images[pieceMove].src = timunMasImgPath;
         if(!isGameOver(board)) {
             var alert = document.getElementById("turnInfo");
             active_turn = "BUTO_IJO";
             alert.innerHTML = "Bagian Buto ijo Menyerang"
+            moveButoIjo();
         }
     }
 }
 
 function moveButoIjo() {
-    alphaBetaMinimax(board, 0, -Infinity, +Infinity);
-
+    minimax(board, 0);
     var move = choice;
     board[move] = BUTO_IJO;
-    document.images[move].src = butoIjoImg.src;
+    document.images[move].src = butoIjoImgPath;
     choice = [];
     active_turn = "TIMUN_MAS"
     if(!isGameOver(board)) {
@@ -68,9 +73,9 @@ function gameScore(currentBoard, depth) {
 }
 
 function minimax(node, depth) {
-    if(checkWinningCondition(node) === 1 || 
+    if(checkWinningCondition(node) === 1 ||
         checkWinningCondition(node) === 2 ||
-        checkWinningCondition(node) === 3) 
+        checkWinningCondition(node) === 3)
     {
         return gameScore(node, depth);
     }
@@ -78,24 +83,40 @@ function minimax(node, depth) {
     // the deeper the recursion, the higher the depths
     depth += 1;
 
+    moves = []
+    scores = []
+
     var availableMoves = getAvailableMoves(node);
     var move, result, possibleGameResult;
-
     if(active_turn === "BUTO_IJO") {
-        for(var i = 0; i < availableMoves; i++) {
+        for(var i = 0; i < availableMoves.length; i++) {
             move = availableMoves[i];
             possibleGameResult = getNewState(move, node);
             result = minimax(possibleGameResult, depth);
+
+            scores.push(result)
+            moves.push(move)
+
             node = undoMove(node, move);
+
+            choice = moves[scores.indexOf(Math.min(...scores))]
         }
         return result;
     } else {
+        for(var i = 0; i < availableMoves.length; i++) {
             move = availableMoves[i];
             possibleGameResult = getNewState(move, node);
             result = minimax(possibleGameResult, depth);
+
+            scores.push(result)
+            moves.push(move)
+
             node = undoMove(node, move);
+
+            choice = moves[scores.indexOf(Math.min(...scores))]
+        }
+        return result;
     }
-    return result;
 }
 
 function undoMove(currentBoard, move) {
@@ -141,18 +162,18 @@ function checkWinningCondition(currentBoard) {
 
     // checking for horizontal conditions
     for(i = 0; i <= 6; i += 3) {
-        if(currentBoard[i] === TIMUN_MAS && currentBoard[i+1] === TIMUN_MAS && currentBoard[i+2] === TIMUN_MAS) 
+        if(currentBoard[i] === TIMUN_MAS && currentBoard[i+1] === TIMUN_MAS && currentBoard[i+2] === TIMUN_MAS)
             return 2;
-        if(currentBoard[i] === BUTO_IJO && currentBoard[i+1] === BUTO_IJO && currentBoard[i+2] === BUTO_IJO) 
+        if(currentBoard[i] === BUTO_IJO && currentBoard[i+1] === BUTO_IJO && currentBoard[i+2] === BUTO_IJO)
             return 3;
     }
 
     // checking for vertical conditions
     for(i=0; i <= 2; i++) {
-        if(currentBoard[i] === TIMUN_MAS && currentBoard[i+3] === TIMUN_MAS && currentBoard[i+6] === TIMUN_MAS) 
+        if(currentBoard[i] === TIMUN_MAS && currentBoard[i+3] === TIMUN_MAS && currentBoard[i+6] === TIMUN_MAS)
             return 2;
-        
-        if(currentBoard[i] === BUTO_IJO && currentBoard[i+3] === BUTO_IJO && currentBoard[i+6] === BUTO_IJO) 
+
+        if(currentBoard[i] === BUTO_IJO && currentBoard[i+3] === BUTO_IJO && currentBoard[i+6] === BUTO_IJO)
             return 3;
     }
 
@@ -183,7 +204,7 @@ function checkWinningCondition(currentBoard) {
 //   3 if COMPUTER_PLAYER won
 function isGameOver(board) {
     if(checkWinningCondition(board) == 0) {
-        return false 
+        return false
     } else if(checkWinningCondition(board) == 1) {
         var turnInfo = document.getElementById("turnInfo");
         turnInfo.innerHTML = messages[1];
