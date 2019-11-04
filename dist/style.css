@@ -1,0 +1,98 @@
+body {
+  background-color: #0D442D;
+  margin: 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+p {
+  color: white;
+  font-size: 25px;
+}
+
+.landing-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 40vw;
+}
+
+.pohon-1 {
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 47vw;
+}
+
+.pohon-2 {
+  z-index: -1;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 48vw;
+}
+
+.semak-1 {
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 65vw;
+}
+
+.semak-2 {
+  z-index: -1;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 60vw;
+}
+
+.row {
+  position: relative;
+  display: flex;
+  height: 5vh;
+  width: 25vw;
+}
+
+.left {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+}
+
+.right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+}
+
+.right select {
+  height: 3vh;
+  font-size: 14px;
+}
+
+.start {
+  font-weight: 700;
+  margin-top: 2em;
+  font-size: 20px;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  width: 13vw;
+  background-color: #FFB13F;
+  cursor: pointer;
+}
+
+.start:hover {
+  background-color: #F08732;
+}
