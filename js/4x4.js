@@ -180,12 +180,12 @@ function checkWinningCondition(currentBoard) {
     }
 
     // Check for diagonal wins
-    if ((currentBoard[0] === TIMUN_MAS && currentBoard[4] === TIMUN_MAS && currentBoard[8] === TIMUN_MAS) ||
-            (currentBoard[2] === TIMUN_MAS && currentBoard[4] === TIMUN_MAS && currentBoard[6] === TIMUN_MAS))
+    if ((currentBoard[0] === TIMUN_MAS && currentBoard[5] === TIMUN_MAS && currentBoard[10] === TIMUN_MAS && currentBoard[15] === TIMUN_MAS) ||
+            (currentBoard[3] === TIMUN_MAS && currentBoard[6] === TIMUN_MAS && currentBoard[9] === TIMUN_MAS && currentBoard[12] === TIMUN_MAS))
         return 2;
 
-    if ((currentBoard[0] === BUTO_IJO && currentBoard[4] === BUTO_IJO && currentBoard[8] === BUTO_IJO) ||
-            (currentBoard[2] === BUTO_IJO && currentBoard[4] === BUTO_IJO && currentBoard[6] === BUTO_IJO))
+    if ((currentBoard[0] === BUTO_IJO && currentBoard[5] === BUTO_IJO && currentBoard[10] === BUTO_IJO && currentBoard[15] === BUTO_IJO) ||
+            (currentBoard[3] === BUTO_IJO && currentBoard[6] === BUTO_IJO && currentBoard[9] === BUTO_IJO && currentBoard[12] === BUTO_IJO))
         return 3;
 
     // Check for tie
