@@ -1,15 +1,17 @@
+// board setting
 let BLANK = new Image()
 let BOARD_SIZE = 25;
-let NOT_OCCUPIED = '0';
+let NOT_OCCUPIED = ' ';
+let TIMUN_MAS = 'O';
 let BUTO_IJO = 'X';
 
 let board = new Array();
 let choice;
 let active_turn = "TIMUN_MAS";
 let messages = ["Permainan belum selesai",
-    "Permainan seri, timun mas belum bisa kabur dari Buto Ijo",
-    "Horeee!! Timun Mas berhasil kabur dari Buto Ijo",
-    "HAHAHAHAHA!! sayang sekali, Buto Ijo berhasil menangkap Timun Mas"]
+                "Permainan seri, timun mas belum bisa kabur dari Buto Ijo",
+                "Horeee!! Timun Mas berhasil kabur dari Buto Ijo",
+                "HAHAHAHAHA!! sayang sekali, Buto Ijo berhasil menangkap Timun Mas"]
 
 let timunMasImgPath = './images/O.png';
 let butoIjoImgPath = './images/X.png';
@@ -148,6 +150,50 @@ function getAvailableMoves(currentBoard) {
     }
     return possibleMoves;
 }
+
+// Check for a winner.  Return
+//   0 if no winner or tie yet
+//   1 if it's a tie
+//   2 if TIMUN MAS MENANG
+//   3 if BUTO IJO MENANG
+function checkWinningCondition(currentBoard) {
+
+    // checking for horizontal wins
+    for (i = 0; i <= 20; i += 5)
+    {
+        if (currentBoard[i] === TIMUN_MAS && currentBoard[i + 1] === TIMUN_MAS && currentBoard[i + 2] === TIMUN_MAS && currentBoard[i + 3] === TIMUN_MAS && currentBoard[i + 4] === TIMUN_MAS)
+            return 2;
+        if (currentBoard[i] === BUTO_IJO && currentBoard[i + 1] === BUTO_IJO && currentBoard[i + 2] === BUTO_IJO && currentBoard[i + 3] === BUTO_IJO && currentBoard[i + 4] === BUTO_IJO)
+            return 3;
+    }
+
+    // Check for vertical wins
+    for (i = 0; i <= 4; i++)
+    {
+        if (currentBoard[i] === TIMUN_MAS && currentBoard[i + 5] === TIMUN_MAS && currentBoard[i + 10] === TIMUN_MAS && currentBoard[i + 15] === TIMUN_MAS && currentBoard[i + 20] === TIMUN_MAS)
+            return 2;
+        if (currentBoard[i] === BUTO_IJO && currentBoard[i + 5] === BUTO_IJO && currentBoard[i + 20] === BUTO_IJO && currentBoard[i + 15] === BUTO_IJO && currentBoard[i + 20] === BUTO_IJO)
+            return 3;
+    }
+
+    // Check for diagonal wins
+    if ((currentBoard[0] === TIMUN_MAS && currentBoard[6] === TIMUN_MAS && currentBoard[12] === TIMUN_MAS && currentBoard[18] === TIMUN_MAS && currentBoard[24] === TIMUN_MAS) ||
+            (currentBoard[4] === TIMUN_MAS && currentBoard[8] === TIMUN_MAS && currentBoard[12] === TIMUN_MAS && currentBoard[16] === TIMUN_MAS && currentBoard[20] === TIMUN_MAS))
+        return 2;
+
+    if ((currentBoard[0] === BUTO_IJO && currentBoard[6] === BUTO_IJO && currentBoard[12] === BUTO_IJO && currentBoard[18] === BUTO_IJO && currentBoard[24] === BUTO_IJO) ||
+            (currentBoard[4] === BUTO_IJO && currentBoard[8] === BUTO_IJO && currentBoard[12] === BUTO_IJO && currentBoard[16] === BUTO_IJO && currentBoard[20] === BUTO_IJO))
+        return 3;
+
+    // Check for tie
+    for (i = 0; i < BOARD_SIZE; i++)
+    {
+        if (currentBoard[i] !== TIMUN_MAS && currentBoard[i] !== BUTO_IJO)
+            return 0;
+    }
+    return 1;
+}
+
 // Check for a winner.  Return
 //   0 if no winner or tie yet
 //   1 if it's a tie
