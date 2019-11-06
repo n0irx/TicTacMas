@@ -171,11 +171,11 @@ function checkWinningCondition(currentBoard) {
     }
 
     // Check for vertical wins
-    for (i = 0; i <= 2; i++)
+    for (i = 0; i <= 3; i++)
     {
-        if (currentBoard[i] === TIMUN_MAS && currentBoard[i + 3] === TIMUN_MAS && currentBoard[i + 6] === TIMUN_MAS)
+        if (currentBoard[i] === TIMUN_MAS && currentBoard[i + 4] === TIMUN_MAS && currentBoard[i + 8] === TIMUN_MAS && currentBoard[i + 12] === TIMUN_MAS)
             return 2;
-        if (currentBoard[i] === BUTO_IJO && currentBoard[i + 3] === BUTO_IJO && currentBoard[i + 6] === BUTO_IJO)
+        if (currentBoard[i] === BUTO_IJO && currentBoard[i + 4] === BUTO_IJO && currentBoard[i + 8] === BUTO_IJO && currentBoard[i + 12] === BUTO_IJO)
             return 3;
     }
 
