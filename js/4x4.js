@@ -161,12 +161,12 @@ function getAvailableMoves(currentBoard) {
 //   3 if BUTO IJO MENANG
 function checkWinningCondition(currentBoard) {
 
-    // checking for horizontal conditions
-    for (i = 0; i <= 6; i += 3)
+    // checking for horizontal wins
+    for (i = 0; i <= 12; i += 4)
     {
-        if (currentBoard[i] === TIMUN_MAS && currentBoard[i + 1] === TIMUN_MAS && currentBoard[i + 2] === TIMUN_MAS)
+        if (currentBoard[i] === TIMUN_MAS && currentBoard[i + 1] === TIMUN_MAS && currentBoard[i + 2] === TIMUN_MAS && currentBoard[i + 3] === TIMUN_MAS)
             return 2;
-        if (currentBoard[i] === BUTO_IJO && currentBoard[i + 1] === BUTO_IJO && currentBoard[i + 2] === BUTO_IJO)
+        if (currentBoard[i] === BUTO_IJO && currentBoard[i + 1] === BUTO_IJO && currentBoard[i + 2] === BUTO_IJO && currentBoard[i + 3] === BUTO_IJO)
             return 3;
     }
 
