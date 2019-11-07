@@ -1,24 +1,17 @@
 body {
   background-color: #0D442D;
-  margin: 0;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'McLaren', cursive;
 }
 
 p {
-  color: white;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .landing-container {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.logo {
-  width: 40vw;
 }
 
 .pohon-1 {
@@ -37,6 +30,62 @@ p {
   width: 48vw;
 }
 
+.white-container{
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 45vw;
+  height: 60vh;
+  border-radius: 50px;
+  box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.title {
+  font-family: 'Yeon Sung', cursive;
+  color: #552288;
+  font-size: 7rem;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  width: 30vw;
+}
+
+.left {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.selection {
+  margin: 17px 0;
+}
+
+.start {
+  margin-top: 40px;
+  font-size: 20px;
+  border: none;
+  border-radius: 50px;
+  padding: 1.3rem 3rem;
+  background-color: #FFB13F;
+  cursor: pointer;
+}
+
+.start:hover {
+  background-color: #F08732;
+}
+
 .semak-1 {
   z-index: -1;
   position: absolute;
@@ -51,48 +100,4 @@ p {
   right: 0;
   bottom: 0;
   width: 60vw;
-}
-
-.row {
-  position: relative;
-  display: flex;
-  height: 5vh;
-  width: 25vw;
-}
-
-.left {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: left;
-}
-
-.right {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: left;
-}
-
-.right select {
-  height: 3vh;
-  font-size: 14px;
-}
-
-.start {
-  font-weight: 700;
-  margin-top: 2em;
-  font-size: 20px;
-  padding: 15px;
-  border: none;
-  border-radius: 10px;
-  width: 13vw;
-  background-color: #FFB13F;
-  cursor: pointer;
-}
-
-.start:hover {
-  background-color: #F08732;
 }
