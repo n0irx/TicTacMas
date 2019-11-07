@@ -43,14 +43,13 @@ function newboard() {
         board[i] = NOT_OCCUPIED;
         document.images[i].src = blank_src;
     }
+    var turnInfo = document.getElementById("turnInfo");
     if (name === "buto") {
-        var turnInfo = document.getElementById("turnInfo");
         active_turn = "BUTO_IJO";
         turnInfo.innerHTML = "Bagian Buto ijo Menyerang";
         // sleep(10000);
         moveButoIjo();
     } else {
-        var turnInfo = document.getElementById("turnInfo");
         active_turn = "TIMUN_MAS";
         turnInfo.innerHTML = 'Mongoooo.....';
     }
