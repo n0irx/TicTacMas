@@ -1,6 +1,6 @@
 // board setting
 let BLANK = new Image()
-let BOARD_SIZE = 9;
+let BOARD_SIZE = 16;
 let NOT_OCCUPIED = ' ';
 let TIMUN_MAS = 'O';
 let BUTO_IJO = 'X';
@@ -24,36 +24,15 @@ let blank_src = './images/blank.png'
 timunMasImg.src = timunMasImgPath;
 butoIjoImg.src = butoIjoImgPath;
 
-function sleep(milliseconds) {
-    let timeStart = new Date().getTime();
-    while (true) {
-        let elapsedTime = new Date().getTime() - timeStart;
-        if (elapsedTime > milliseconds) {
-            break;
-        }
-    }
-}
-
-let params = (new URL(document.location)).searchParams;
-let name = params.get('name'); // is the string "Jonathan Smith".
-
-
 function newboard() {
     for (let i = 0; i < BOARD_SIZE; i++) {
         board[i] = NOT_OCCUPIED;
         document.images[i].src = blank_src;
     }
-    if (name === "buto") {
-        var turnInfo = document.getElementById("turnInfo");
-        active_turn = "BUTO_IJO";
-        turnInfo.innerHTML = "Bagian Buto ijo Menyerang";
-        // sleep(10000);
-        moveButoIjo();
-    } else {
-        var turnInfo = document.getElementById("turnInfo");
-        active_turn = "TIMUN_MAS";
-        turnInfo.innerHTML = 'Mongoooo.....';
-    }
+
+    var turnInfo = document.getElementById("turnInfo");
+    active_turn = "TIMUN_MAS";
+    turnInfo.innerHTML = 'Mongoooo.....';
 }
 
 function makeMove(pieceMove) {
@@ -181,29 +160,29 @@ function getAvailableMoves(currentBoard) {
 //   3 if BUTO IJO MENANG
 function checkWinningCondition(currentBoard) {
 
-    // checking for horizontal conditions
-    for (i = 0; i <= 6; i += 3) {
-        if (currentBoard[i] === TIMUN_MAS && currentBoard[i + 1] === TIMUN_MAS && currentBoard[i + 2] === TIMUN_MAS)
+    // checking for horizontal wins
+    for (i = 0; i <= 12; i += 4) {
+        if (currentBoard[i] === TIMUN_MAS && currentBoard[i + 1] === TIMUN_MAS && currentBoard[i + 2] === TIMUN_MAS && currentBoard[i + 3] === TIMUN_MAS)
             return 2;
-        if (currentBoard[i] === BUTO_IJO && currentBoard[i + 1] === BUTO_IJO && currentBoard[i + 2] === BUTO_IJO)
+        if (currentBoard[i] === BUTO_IJO && currentBoard[i + 1] === BUTO_IJO && currentBoard[i + 2] === BUTO_IJO && currentBoard[i + 3] === BUTO_IJO)
             return 3;
     }
 
     // Check for vertical wins
-    for (i = 0; i <= 2; i++) {
-        if (currentBoard[i] === TIMUN_MAS && currentBoard[i + 3] === TIMUN_MAS && currentBoard[i + 6] === TIMUN_MAS)
+    for (i = 0; i <= 3; i++) {
+        if (currentBoard[i] === TIMUN_MAS && currentBoard[i + 4] === TIMUN_MAS && currentBoard[i + 8] === TIMUN_MAS && currentBoard[i + 12] === TIMUN_MAS)
             return 2;
-        if (currentBoard[i] === BUTO_IJO && currentBoard[i + 3] === BUTO_IJO && currentBoard[i + 6] === BUTO_IJO)
+        if (currentBoard[i] === BUTO_IJO && currentBoard[i + 4] === BUTO_IJO && currentBoard[i + 8] === BUTO_IJO && currentBoard[i + 12] === BUTO_IJO)
             return 3;
     }
 
     // Check for diagonal wins
-    if ((currentBoard[0] === TIMUN_MAS && currentBoard[4] === TIMUN_MAS && currentBoard[8] === TIMUN_MAS) ||
-        (currentBoard[2] === TIMUN_MAS && currentBoard[4] === TIMUN_MAS && currentBoard[6] === TIMUN_MAS))
+    if ((currentBoard[0] === TIMUN_MAS && currentBoard[5] === TIMUN_MAS && currentBoard[10] === TIMUN_MAS && currentBoard[15] === TIMUN_MAS) ||
+        (currentBoard[3] === TIMUN_MAS && currentBoard[6] === TIMUN_MAS && currentBoard[9] === TIMUN_MAS && currentBoard[12] === TIMUN_MAS))
         return 2;
 
-    if ((currentBoard[0] === BUTO_IJO && currentBoard[4] === BUTO_IJO && currentBoard[8] === BUTO_IJO) ||
-        (currentBoard[2] === BUTO_IJO && currentBoard[4] === BUTO_IJO && currentBoard[6] === BUTO_IJO))
+    if ((currentBoard[0] === BUTO_IJO && currentBoard[5] === BUTO_IJO && currentBoard[10] === BUTO_IJO && currentBoard[15] === BUTO_IJO) ||
+        (currentBoard[3] === BUTO_IJO && currentBoard[6] === BUTO_IJO && currentBoard[9] === BUTO_IJO && currentBoard[12] === BUTO_IJO))
         return 3;
 
     // Check for tie
@@ -235,10 +214,3 @@ function isGameOver(board) {
     }
     return true;
 }
-
-
-
-
-
-
-
