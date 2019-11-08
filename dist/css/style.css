@@ -1,8 +1,7 @@
 body {
   background-color: #0D442D;
   font-family: 'McLaren', cursive;
-  width:100vw;
-  height:100vh;
+  height:100%;
 }
 
 p {
@@ -53,10 +52,10 @@ p {
   background-color: #fefefe;
   border-radius: 10px;
   margin: 9vh 9vw;
-  padding: 20px;
   border: 1px solid #aaaaaa;
   width: 80%;
   text-align: center;
+  padding: 50px;
 }
 
 .close {
@@ -75,19 +74,26 @@ p {
 
 
 .subtitle {
-  color: #FFB13F;
+  color: #552288;
   font-size: 2.5em;
   font-weight: bold;
-  margin: 30px;
+}
+
+.subtitle-2 {
+  color: #552288;
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-bottom: 0px;
 }
 
 .line {
   border-top: 1px solid #888;
+  width: 100%;
 }
 
 .line-2 {
   border-top: 1px solid #888;
-  width: 95%;
+
 }
 
 .how-to-content {
@@ -97,7 +103,6 @@ p {
 
 .bold {
   font-weight: 700;
-  color: #552288;
 }
 
 .content-container {
@@ -105,6 +110,15 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.content-container-2 {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 70px;
+  position: relative;
 }
 
 .pohon-1 {
@@ -123,6 +137,16 @@ p {
   width: 48vw;
 }
 
+.pohon-2-2 {
+  z-index: -1;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 48vw;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
 .white-container {
   background-color: white;
   display: flex;
@@ -131,7 +155,7 @@ p {
   align-items: center;
   width: 45vw;
   height: 60vh;
-  border-radius: 50px;
+  border-radius: 30px;
   box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -142,9 +166,9 @@ p {
   justify-content: center;
   align-items: center;
   width: 77vw;
-  height: 70vh;
-  border-radius: 50px;
+  border-radius: 30px;
   box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 50px;
 }
 
 .title {
@@ -168,6 +192,11 @@ p {
   align-items: center;
 }
 
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
 .left {
   display: flex;
   flex-direction: column;
@@ -177,8 +206,8 @@ p {
 .left-2 {
   display: flex;
   flex-direction: column;
-  width: 65%;
-  padding: 40px;
+  align-items: center;
+  width: 50%;
 }
 
 .right {
@@ -189,8 +218,10 @@ p {
 
 .right-2 {
   display: flex;
-  flex-direction: column;
-  width: 35%;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 50%;
+  padding: 40px;
 }
 
 .selection {
@@ -227,8 +258,8 @@ p {
   width: 60vw;
 }
 
-.raksasa {
-  width: 25vw;
+.character {
+  width: 37%;
 }
 
 .button-story {
@@ -244,4 +275,10 @@ p {
 
 .button-story:hover {
   background-color: #F08732;
+}
+
+.sumber {
+  color: #FFB13F;
+  font-size: 1.1rem;
+  text-align: center;
 }
