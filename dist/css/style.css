@@ -13,7 +13,6 @@ p {
   right: 0;
   display: flex;
   justify-content: flex-end;
-<<<<<<< HEAD
   z-index: 2;
 }
 
@@ -23,8 +22,6 @@ p {
   display: flex;
   padding-left: 18px;
   z-index: 2;
-=======
->>>>>>> c38c430abe0455f81321f5ae6665fcb670ce1925
 }
 
 .nav-button {
@@ -132,10 +129,7 @@ p {
   align-items: center;
   padding: 70px;
   position: relative;
-<<<<<<< HEAD
   z-index: 1;
-=======
->>>>>>> c38c430abe0455f81321f5ae6665fcb670ce1925
 }
 
 .pohon-1 {
