@@ -75,7 +75,8 @@ function gameScore(currentBoard, depth) {
 function minimax(node, depth, alpha, beta) {
     if(checkWinningCondition(node) === 1 ||
         checkWinningCondition(node) === 2 ||
-        checkWinningCondition(node) === 3)
+        checkWinningCondition(node) === 3 ||
+        depth === 6)
     {
         return gameScore(node, depth);
     }
