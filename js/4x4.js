@@ -9,15 +9,9 @@ let board = new Array()
 let choice;
 let active_turn = "TIMUN_MAS";
 let messages = ["Permainan belum selesai",
-<<<<<<< HEAD
                 "Permainan seri, timun mas belum bisa kabur dari Buto Ijo",
                 "Horeee!! Timun Mas berhasil kabur dari Buto Ijo",
                 "HAHAHAHAHA!! sayang sekali, Buto Ijo berhasil menangkap Timun Mas"]
-=======
-    "Permainan seri, timun mas belum bisa kabur dari Buto Ijo",
-    "Horeee!! Timun Mas berhasil kabur dari Buto Ijo",
-    "HAHAHAHAHA!! sayang sekali, Buto Ijo berhasil menangkap Timun Mas"]
->>>>>>> c38c430abe0455f81321f5ae6665fcb670ce1925
 
 let timunMasImgPath = './images/O.png';
 let butoIjoImgPath = './images/X.png';
@@ -161,7 +155,7 @@ function minimax(node, depth, alpha, beta) {
                 beta = result
                 if(depth === 1) {
                     choice = move
-                } 
+                }
 =======
             if (result < beta) {
                 beta = result
@@ -268,7 +262,7 @@ function checkWinningCondition(currentBoard) {
     {
         if (currentBoard[i] !== TIMUN_MAS && currentBoard[i] !== BUTO_IJO)
             return 0;
-    }   
+    }
 =======
         (currentBoard[3] === TIMUN_MAS && currentBoard[6] === TIMUN_MAS && currentBoard[9] === TIMUN_MAS && currentBoard[12] === TIMUN_MAS))
         return 2;
