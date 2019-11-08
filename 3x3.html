@@ -2,29 +2,43 @@
     <head>
         <title>Tic-Tac-Mas</title>
         <script src="js/3x3.js"></script>
+        <link rel="stylesheet" href="dist/css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=McLaren&display=swap" rel="stylesheet">
     </head>
     <body onload="newboard();">
-        <h1 style="text-align:center; width:280;">Tic-Tac-Mas</h1>
-        <div>
-            <img src="images/blank.png" width="90" height="90" onclick="makeMove(0)" style="position:absolute; left:10; top:50; z-index:1" />
-            <img src="images/blank.png" width="90" height="90" onclick="makeMove(1)" style="position:absolute; left:100; top:50; z-index:1" />
-            <img src="images/blank.png" width="90" height="90" onclick="makeMove(2)" style="position:absolute; left:190; top:50; z-index:1" />
-            <img src="images/blank.png" width="90" height="90" onclick="makeMove(3)" style="position:absolute; left:10; top:140; z-index:1" />
-            <img src="images/blank.png" width="90" height="90" onclick="makeMove(4)" style="position:absolute; left:100; top:140; z-index:1" />
-            <img src="images/blank.png" width="90" height="90" onclick="makeMove(5)" style="position:absolute; left:190; top:140; z-index:1" />
-            <img src="images/blank.png" width="90" height="90" onclick="makeMove(6)" style="position:absolute; left:10; top:230; z-index:1" />
-            <img src="images/blank.png" width="90" height="90" onclick="makeMove(7)" style="position:absolute; left:100; top:230; z-index:1" />
-            <img src="images/blank.png" width="90" height="90" onclick="makeMove(8)" style="position:absolute; left:190; top:230; z-index:1" />
+        <div class="content-container">
+            <h1 class="title-2">Tic-Tac-Mas</h1>
+            <div class="board-container">
+                <div class="board-size">
+                    <button onclick="window.location.href='/3x3.html'" class="button-size">3x3</button>
+                    <button onclick="window.location.href='/4x4.html'" class="button-size">4x4</button>
+                    <button onclick="window.location.href='/5x5.html'" class="button-size">5x5</button>
+                </div>
+                <div class="board-content">
+                    <div class="row-board">
+                        <img src="images/blank.png" width="100" height="100" onclick="makeMove(0)" />
+                        <img src="images/blank.png" width="100" height="100" onclick="makeMove(1)" />
+                        <img src="images/blank.png" width="100" height="100" onclick="makeMove(2)" />
+                    </div>
+                    <div class="row-board">
+                        <img src="images/blank.png" width="100" height="100" onclick="makeMove(3)" />
+                        <img src="images/blank.png" width="100" height="100" onclick="makeMove(4)" />
+                        <img src="images/blank.png" width="100" height="100" onclick="makeMove(5)" />
+                    </div>
+                    <div class="row-board">
+                        <img src="images/blank.png" width="100" height="100" onclick="makeMove(6)" />
+                        <img src="images/blank.png" width="100" height="100" onclick="makeMove(7)" />
+                        <img src="images/blank.png" width="100" height="100" onclick="makeMove(8)" />
+                    </div>
+                    <input class="new-game" type="button" value="New Game" onclick="newboard()" />
+                </div>
+                <div class="info-game">
+                    <p id="turnInfo"> TURN INFO </p>
+                </div>
+            </div>
         </div>
-
-        <p id="turnInfo" style="text-align:center; width:280; position:absolute; left:5; top:350; z-index:1" > TURN INFO </p>
-        <form>
-            <input type="button" value="New Game" onclick="newboard()" style="position:absolute; left:100; top:400; z-index:1"/>
-        </form>
-
-        <div style="position:absolute; left:350; top:50; z-index:1">
-            <!-- <strong>Search time for move:</strong> <br /> -->
-            <div id="searchTime"></div>
-       </div>
     </body>
 </html>

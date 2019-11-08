@@ -108,6 +108,7 @@ p {
 .content-container {
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -174,6 +175,14 @@ p {
 .title {
   font-family: 'Yeon Sung', cursive;
   color: #552288;
+  font-size: 7rem;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.title-2 {
+  font-family: 'Yeon Sung', cursive;
+  color: #FFB13F;
   font-size: 7rem;
   margin-top: 0;
   margin-bottom: 20px;
@@ -281,4 +290,69 @@ p {
   color: #FFB13F;
   font-size: 1.1rem;
   text-align: center;
+}
+
+.board-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.board-size {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 30px;
+  height: 75%;
+}
+
+.board-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-game {
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+  height: 75%;
+}
+
+.button-size {
+  margin-top: 15px;
+  font-size: 20px;
+  border: none;
+  border-radius: 50px;
+  padding: 1.3rem;
+  background-color: #FFB13F;
+  cursor: pointer;
+}
+
+.button-size:hover {
+  background-color: #F08732;
+}
+
+.row-board {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.new-game {
+  margin-top: 30px;
+  font-size: 20px;
+  border: none;
+  border-radius: 50px;
+  padding: 1.3rem 4px;
+  width: 12vw;
+  background-color: #FFB13F;
+  cursor: pointer;
+}
+
+#turnInfo {
+  color: white;
 }
