@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>TicTacMas</title>
-	<link rel="stylesheet" type="text/css" href="dist/style.css">
+  <title>TicTacMas</title>
+  <link rel="stylesheet" type="text/css" href="dist/style.css">
 </head>
+
 <body>
-  <img class="pohon-1" src="dist/assets/pohon-1.png"/>
-  <img class="pohon-2" src="dist/assets/pohon-2.png"/>
-	<div class="landing-container">
-    <img class="logo" src="dist/assets/tictacmas_logo.png"/>
+  <img class="pohon-1" src="dist/assets/pohon-1.png" />
+  <img class="pohon-2" src="dist/assets/pohon-2.png" />
+  <div class="landing-container">
+    <img class="logo" src="dist/assets/tictacmas_logo.png" />
     <div class="row">
       <div class="left">
         <p>Pemain Pertama:</p>
@@ -33,9 +35,18 @@
       </div>
     </div>
     <button class="start">Mulai Permainan!</button>
+    <audio controls loop>
+      <source src="music/cublak.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
   </div>
-  <img class="semak-1" src="dist/assets/semak-1.png"/>
-  <img class="semak-2" src="dist/assets/semak-2.png"/>
-	<script type="text/javascript" src="dist/bundle.js"></script>
+  <img class="semak-1" src="dist/assets/semak-1.png" />
+  <img class="semak-2" src="dist/assets/semak-2.png" />
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="js/musicPlayer.js"></script>
+
+  <!-- <script type="text/javascript" src="dist/bundle.js">
+    </script> -->
 </body>
+
 </html>
