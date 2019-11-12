@@ -35,7 +35,7 @@ function sleep(milliseconds) {
 }
 
 let params = (new URL(document.location)).searchParams;
-let name = params.get('name'); // is the string "Jonathan Smith".
+let name = params.get('name');
 
 
 function newboard() {
@@ -44,12 +44,12 @@ function newboard() {
         document.images[i].src = blank_src;
     }
     var turnInfo = document.getElementById("turnInfo");
-    if (name === "buto") {
+    if (name === "butoIjo") {
         active_turn = "BUTO_IJO";
         turnInfo.innerHTML = "Bagian Buto ijo Menyerang";
         // sleep(10000);
         moveButoIjo();
-    } else {
+    } else if (name === "timunMas") {
         active_turn = "TIMUN_MAS";
         turnInfo.innerHTML = 'Mongoooo.....';
     }

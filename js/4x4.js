@@ -24,6 +24,10 @@ let blank_src = './images/blank.png'
 timunMasImg.src = timunMasImgPath;
 butoIjoImg.src = butoIjoImgPath;
 
+
+let params = (new URL(document.location)).searchParams;
+let name = params.get('name');
+
 function newboard() {
     for (let i = 0; i < BOARD_SIZE; i++) {
         board[i] = NOT_OCCUPIED;
@@ -31,12 +35,12 @@ function newboard() {
     }
 
     var turnInfo = document.getElementById("turnInfo");
-    if (name === "buto") {
+    if (name === "butoIjo") {
         active_turn = "BUTO_IJO";
         turnInfo.innerHTML = "Bagian Buto ijo Menyerang";
         // sleep(10000);
         moveButoIjo();
-    } else {
+    } else if (name === "timunMas") {
         active_turn = "TIMUN_MAS";
         turnInfo.innerHTML = 'Mongoooo.....';
     }

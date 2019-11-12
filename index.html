@@ -67,8 +67,8 @@
                 </div>
                 <div class="right">
                     <select class="selection" id="player">
-                        <option value="1">Timun Mas</option>
-                        <option value="0">Raksasa</option>
+                        <option value="timunMas">Timun Mas</option>
+                        <option value="butoIjo">Raksasa</option>
                     </select>
                 </div>
             </div>
@@ -78,13 +78,13 @@
                 </div>
                 <div class="right">
                     <select class="selection" id="size">
-                        <option value="1">3 x 3</option>
-                        <option value="2">4 x 4</option>
-                        <option value="3">5 x 5</option>
+                        <option value="3">3 x 3</option>
+                        <option value="4">4 x 4</option>
+                        <option value="5">5 x 5</option>
                     </select>
                 </div>
             </div>
-            <button class="start">Mulai Permainan!</button>
+            <button class="start" onclick="startFunction()">Mulai Permainan!</button>
             <audio controls loop>
                 <source src="music/cublak.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
@@ -128,6 +128,29 @@
         if (event.target == modal) {
             modal.style.display = "none";
         }
+    }
+
+    function startFunction() {
+        var player = document.getElementById("player").value;
+        var size = document.getElementById("size").value;
+        if (player == "timunMas") {
+            if (size == 3) {
+                window.location.href = '3x3.html?name=timunMas';
+            } else if (size == 4) {
+                window.location.href = '4x4.html?name=timunMas';
+            } else if (size == 5) {
+                window.location.href = '5x5.html?name=timunMas';
+            }
+        } else if (player == "butoIjo") {
+            if (size == 3) {
+                window.location.href = '3x3.html?name=butoIjo';
+            } else if (size == 4) {
+                window.location.href = '4x4.html?name=butoIjo';
+            } else if (size == 5) {
+                window.location.href = '5x5.html?name=butoIjo';
+            }
+        }
+
     }
 </script>
 

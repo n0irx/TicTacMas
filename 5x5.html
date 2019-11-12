@@ -13,15 +13,17 @@
 
 <body onload="newboard();">
     <div class="navbar-container">
-        <a href="./index.html" class="nav-button"><p class="icon"><i class="fa fa-home"></i></p></a>
+        <a href="./index.html" class="nav-button">
+            <p class="icon"><i class="fa fa-home"></i></p>
+        </a>
     </div>
     <div class="content-container">
         <h1 class="title-2">Tic-Tac-Mas</h1>
         <div class="board-container">
             <div class="board-size">
-                <button onclick="window.location.href='/3x3.html'" class="button-size">3x3</button>
-                <button onclick="window.location.href='/4x4.html'" class="button-size">4x4</button>
-                <button onclick="window.location.href='/5x5.html'" class="button-size">5x5</button>
+                <button onclick="function3()" class="button-size">3x3</button>
+                <button onclick="function4()" class="button-size">4x4</button>
+                <button onclick="function5()" class="button-size">5x5</button>
             </div>
             <div class="board-content">
                 <div class="row-board">
@@ -71,5 +73,34 @@
         Your browser does not support the audio element.
     </audio>
 </body>
+<script>
+    function function3() {
+        let params = (new URL(document.location)).searchParams;
+        let name = params.get('name');
+        if (name === "butoIjo") {
+            window.location.href = '3x3.html?name=butoIjo';
+        } else if (name === "timunMas") {
+            window.location.href = '3x3.html?name=timunMas';
+        }
+    }
+    function function4() {
+        let params = (new URL(document.location)).searchParams;
+        let name = params.get('name');
+        if (name === "butoIjo") {
+            window.location.href = '4x4.html?name=butoIjo';
+        } else if (name === "timunMas") {
+            window.location.href = '4x4.html?name=timunMas';
+        }
+    }
+    function function5() {
+        let params = (new URL(document.location)).searchParams;
+        let name = params.get('name');
+        if (name === "butoIjo") {
+            window.location.href = '5x5.html?name=butoIjo';
+        } else if (name === "timunMas") {
+            window.location.href = '5x5.html?name=timunMas';
+        }
+    }
+</script>
 
 </html>
