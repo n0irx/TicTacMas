@@ -352,6 +352,10 @@ p {
   align-items: center;
 }
 
+.board-tile {
+  cursor: pointer;
+}
+
 .new-game {
   margin-top: 30px;
   font-size: 20px;
