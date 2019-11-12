@@ -59,7 +59,6 @@ function newboard() {
     if (name === "buto") {
         active_turn = "BUTO_IJO";
         turnInfo.innerHTML = "Bagian Buto ijo Menyerang";
-        // sleep(10000);
         moveButoIjo();
     } else {
         active_turn = "TIMUN_MAS";
