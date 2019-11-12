@@ -67,6 +67,8 @@ function gameScore(currentBoard, depth) {
         return depth - 10;
     } else if (score === 3) {
         return 10 - depth;
+    } else {
+        return 0;
     }
 }
 
@@ -173,7 +175,7 @@ function checkWinningCondition(currentBoard) {
     {
         if (currentBoard[i] === TIMUN_MAS && currentBoard[i + 5] === TIMUN_MAS && currentBoard[i + 10] === TIMUN_MAS && currentBoard[i + 15] === TIMUN_MAS && currentBoard[i + 20] === TIMUN_MAS)
             return 2;
-        if (currentBoard[i] === BUTO_IJO && currentBoard[i + 5] === BUTO_IJO && currentBoard[i + 20] === BUTO_IJO && currentBoard[i + 15] === BUTO_IJO && currentBoard[i + 20] === BUTO_IJO)
+        if (currentBoard[i] === BUTO_IJO && currentBoard[i + 5] === BUTO_IJO && currentBoard[i + 10] === BUTO_IJO && currentBoard[i + 15] === BUTO_IJO && currentBoard[i + 20] === BUTO_IJO)
             return 3;
     }
 
