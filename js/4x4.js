@@ -61,6 +61,9 @@ function makeMove(pieceMove) {
     if (!isGameOver(board) && board[pieceMove] === NOT_OCCUPIED) {
         board[pieceMove] = TIMUN_MAS;
         document.images[pieceMove].src = timunMasImgPath;
+        document.images[pieceMove].setAttribute("onmouseover", timunMasImgPath)
+        document.images[pieceMove].setAttribute("onmouseout", timunMasImgPath)
+        document.images[pieceMove].style.cursor="default";
         if (!isGameOver(board)) {
             var alert = document.getElementById("turnInfo");
             active_turn = "BUTO_IJO";
