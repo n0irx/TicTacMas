@@ -20,6 +20,7 @@ let timunMasImg = new Image()
 let butoIjoImg = new Image()
 
 let blank_src = './images/blank.png'
+let blank_on_hover_src = './images/blank2.png'
 
 timunMasImg.src = timunMasImgPath;
 butoIjoImg.src = butoIjoImgPath;
@@ -32,6 +33,16 @@ function newboard() {
     for (let i = 0; i < BOARD_SIZE; i++) {
         board[i] = NOT_OCCUPIED;
         document.images[i].src = blank_src;
+
+        tile = document.images[i];
+        tile.onmouseover = function(){
+            this.src = blank_on_hover_src;
+            this.style.cursor="pointer";
+        };
+        tile.onmouseout = function(){
+            this.src = blank_src;
+            this.style.cursor="default";
+        };
     }
 
     var turnInfo = document.getElementById("turnInfo");
@@ -64,6 +75,9 @@ function moveButoIjo() {
     var move = choice;
     board[move] = BUTO_IJO;
     document.images[move].src = butoIjoImgPath;
+    document.images[move].setAttribute("onmouseover", butoIjoImgPath)
+    document.images[move].setAttribute("onmouseout", butoIjoImgPath)
+    document.images[move].style.cursor="default";
     choice = [];
     active_turn = "TIMUN_MAS"
     if (!isGameOver(board)) {
@@ -204,7 +218,6 @@ function checkWinningCondition(currentBoard) {
     }
     return 1;
 }
-
 
 // Check for a winner.  Return
 //   0 if no winner or tie yet

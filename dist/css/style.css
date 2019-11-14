@@ -311,10 +311,16 @@ p {
 
 .board-size {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   margin-right: 30px;
   height: 75%;
+  width: 20vw;
+}
+
+.size {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;=
 }
 
 .board-content {
@@ -329,6 +335,7 @@ p {
   align-items: center;
   margin-left: 30px;
   height: 75%;
+  width: 20vw;
 }
 
 .button-size {
@@ -350,6 +357,10 @@ p {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+.board-tile {
+  cursor: pointer;
 }
 
 .new-game {
