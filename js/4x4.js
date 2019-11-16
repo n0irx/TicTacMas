@@ -49,8 +49,8 @@ function newboard() {
     if (name === "butoIjo") {
         active_turn = "BUTO_IJO";
         turnInfo.innerHTML = "Bagian Buto ijo Menyerang";
-        // sleep(10000);
-        moveButoIjo();
+        setTimeout(moveButoIjo, 500);
+        // moveButoIjo();
     } else if (name === "timunMas") {
         active_turn = "TIMUN_MAS";
         turnInfo.innerHTML = 'Mongoooo.....';
@@ -68,7 +68,8 @@ function makeMove(pieceMove) {
             var alert = document.getElementById("turnInfo");
             active_turn = "BUTO_IJO";
             alert.innerHTML = "Bagian Buto ijo Menyerang"
-            moveButoIjo();
+            setTimeout(moveButoIjo, 500);
+            // moveButoIjo();
         }
     }
 }

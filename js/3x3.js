@@ -25,16 +25,6 @@ let blank_on_hover_src = './images/blank2.png'
 timunMasImg.src = timunMasImgPath;
 butoIjoImg.src = butoIjoImgPath;
 
-function sleep(milliseconds) {
-    let timeStart = new Date().getTime();
-    while (true) {
-        let elapsedTime = new Date().getTime() - timeStart;
-        if (elapsedTime > milliseconds) {
-            break;
-        }
-    }
-}
-
 let params = (new URL(document.location)).searchParams;
 let name = params.get('name');
 
@@ -58,7 +48,7 @@ function newboard() {
     if (name === "butoIjo") {
         active_turn = "BUTO_IJO";
         turnInfo.innerHTML = "Bagian Buto ijo Menyerang";
-        moveButoIjo();
+        setTimeout(moveButoIjo, 500);
     } else if (name === "timunMas") {
         active_turn = "TIMUN_MAS";
         turnInfo.innerHTML = 'Mongoooo.....';
@@ -76,7 +66,7 @@ function makeMove(pieceMove) {
             var alert = document.getElementById("turnInfo");
             active_turn = "BUTO_IJO";
             alert.innerHTML = "Bagian Buto ijo Menyerang"
-            moveButoIjo();
+            setTimeout(moveButoIjo, 500);
         }
     }
 }
