@@ -29,6 +29,10 @@ butoIjoImg.src = butoIjoImgPath;
 let params = (new URL(document.location)).searchParams;
 let name = params.get('name');
 
+var moveSound = new Audio('./music/soundeffects.wav')
+var loseSound = new Audio('./music/lose.wav');
+var tieSound = new Audio('./music/drawresult.wav')
+
 function newboard() {
     for (let i = 0; i < BOARD_SIZE; i++) {
         board[i] = NOT_OCCUPIED;
@@ -64,6 +68,9 @@ function makeMove(pieceMove) {
         document.images[pieceMove].setAttribute("onmouseover", timunMasImgPath)
         document.images[pieceMove].setAttribute("onmouseout", timunMasImgPath)
         document.images[pieceMove].style.cursor="default";
+        
+        moveSound.play()
+        
         if (!isGameOver(board)) {
             var alert = document.getElementById("turnInfo");
             active_turn = "BUTO_IJO";
@@ -233,12 +240,14 @@ function isGameOver(board) {
         return false
     } else if (checkWinningCondition(board) === 1) {
         var turnInfo = document.getElementById("turnInfo");
+        tieSound.play();
         turnInfo.innerHTML = messages[1];
     } else if (checkWinningCondition(board) === 2) {
         var turnInfo = document.getElementById("turnInfo");
         turnInfo.innerHTML = messages[2];
     } else {
         var turnInfo = document.getElementById("turnInfo");
+        loseSound.play();
         turnInfo.innerHTML = messages[3];
     }
     return true;
