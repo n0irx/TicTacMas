@@ -54,7 +54,6 @@ function newboard() {
         active_turn = "BUTO_IJO";
         turnInfo.innerHTML = "Bagian Buto ijo Menyerang";
         setTimeout(moveButoIjo, 500);
-        // moveButoIjo();
     } else if (name === "timunMas") {
         active_turn = "TIMUN_MAS";
         turnInfo.innerHTML = 'Mongoooo.....';
@@ -68,7 +67,6 @@ function makeMove(pieceMove) {
         document.images[pieceMove].setAttribute("onmouseover", timunMasImgPath)
         document.images[pieceMove].setAttribute("onmouseout", timunMasImgPath)
         document.images[pieceMove].style.cursor="default";
-        
         moveSound.play()
         
         if (!isGameOver(board)) {
@@ -76,7 +74,6 @@ function makeMove(pieceMove) {
             active_turn = "BUTO_IJO";
             alert.innerHTML = "Bagian Buto ijo Menyerang"
             setTimeout(moveButoIjo, 500);
-            // moveButoIjo();
         }
     }
 }
