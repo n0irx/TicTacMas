@@ -368,8 +368,9 @@ p {
   align-items: center;
 }
 
-.board-tile {
-  cursor: pointer;
+.tile {
+  width: 100px;
+  height: 100px;
 }
 
 .new-game {
@@ -424,10 +425,6 @@ p {
     margin-top: 50px;
   }
 
-  .title {
-    font-size: 9rem;
-  }
-
   .row {
     width: 50vw;
   }
@@ -470,6 +467,45 @@ p {
 
   .button-story {
     width: 30vw;
+  }
+
+  .tile {
+    width: 150px;
+    height: 150px;
+  }
+
+  .new-game {
+    width: 22vw;
+  }
+
+  .board-container {
+    flex-direction: column;
+    align-items: center;
+    width: 60vw;
+  }
+
+  .board-size {
+    justify-content: center;
+    margin-right: 0px;
+    width: 100%;
+  }
+
+  .size {
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 30px;
+    width: 70%;
+  }
+
+  .info-game {
+    justify-content: center;
+    margin-top: 30px;
+    margin-left: 0px;
+    width: 100%;
+  }
+
+  #turnInfo {
+    text-align: center;
   }
 }
 
