@@ -36,7 +36,7 @@ function sleep(milliseconds) {
 
 let params = (new URL(document.location)).searchParams;
 let name = params.get('name');
-
+let size = params.get('size');
 
 function newboard() {
     for (let i = 0; i < BOARD_SIZE; i++) {
