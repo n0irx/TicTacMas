@@ -44,6 +44,15 @@ p {
   color: #888;
 }
 
+.icon-2 {
+  font-size: 2.5rem;
+  color: white;
+}
+
+.icon-2:hover {
+  color: #888;
+}
+
 .modal {
   display: none;
   position: fixed;
@@ -60,7 +69,7 @@ p {
 .modal-content {
   background-color: #fefefe;
   border-radius: 10px;
-  margin: 9vh 9vw;
+  margin: 9vh 7vw;
   border: 1px solid #aaaaaa;
   width: 80%;
   text-align: center;
@@ -233,9 +242,10 @@ p {
 
 .left-2 {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-evenly;
   width: 50%;
+  padding: 40px;
 }
 
 .right {
@@ -246,10 +256,9 @@ p {
 
 .right-2 {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
   width: 50%;
-  padding: 40px;
 }
 
 .selection {
@@ -320,10 +329,16 @@ p {
 
 .board-size {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   margin-right: 30px;
   height: 75%;
+  width: 20vw;
+}
+
+.size {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .board-content {
@@ -338,6 +353,7 @@ p {
   align-items: center;
   margin-left: 30px;
   height: 75%;
+  width: 20vw;
 }
 
 .button-size {
@@ -354,11 +370,21 @@ p {
   background-color: #F08732;
 }
 
+.button-size:disabled {
+  background-color: #F08732;
+  cursor: default;
+}
+
 .row-board {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+.tile {
+  width: 100px;
+  height: 100px;
 }
 
 .new-game {
@@ -372,6 +398,136 @@ p {
   cursor: pointer;
 }
 
+.new-game:hover {
+  background-color: #F08732;
+}
+
 #turnInfo {
   color: white;
+}
+
+/* Media for above 1600 in width */
+@media (min-width: 1601px) and (min-height: 700px) {
+
+}
+
+/* Media for average smartphones*/
+@media (max-width: 64em) {
+
+  .pohon-1 {
+    width: 100vw;
+  }
+
+  .pohon-2 {
+    display: none;
+  }
+
+  .pohon-2-2 {
+    display: none;
+  }
+
+  .semak-1 {
+    width: 100vw;
+  }
+
+  .semak-2 {
+    width: 100vw;
+  }
+
+  .white-container {
+    width: 90vw;
+    height: 40vh;
+  }
+
+  .white-container-2 {
+    margin-top: 50px;
+  }
+
+  .row {
+    width: 50vw;
+  }
+
+  .row-2 {
+    flex-direction: column;
+  }
+
+  .left-2 {
+    width: 60%;
+    padding: 40px;
+  }
+
+  .right-2 {
+    width: 100%;
+  }
+
+  .navbar-container {
+    width: 17vw;
+    padding-right: 18px;
+  }
+
+  .nav-button {
+    padding-top: 10px;
+    padding-left: 20px;
+  }
+
+  .icon {
+    font-size: 4rem;
+  }
+
+  .icon-2 {
+    font-size: 3.5rem;
+    color: white;
+  }
+
+  .modal-content {
+    margin: 22vh 4.5vw;
+  }
+
+  .button-story {
+    width: 30vw;
+  }
+
+  .tile {
+    width: 150px;
+    height: 150px;
+  }
+
+  .new-game {
+    width: 22vw;
+  }
+
+  .board-container {
+    flex-direction: column;
+    align-items: center;
+    width: 60vw;
+  }
+
+  .board-size {
+    justify-content: center;
+    margin-right: 0px;
+    width: 100%;
+  }
+
+  .size {
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 30px;
+    width: 70%;
+  }
+
+  .info-game {
+    justify-content: center;
+    margin-top: 30px;
+    margin-left: 0px;
+    width: 100%;
+  }
+
+  #turnInfo {
+    text-align: center;
+  }
+}
+
+/* media for Iphone 5  or smaller phones*/
+@media (max-height: 600px) {
+
 }

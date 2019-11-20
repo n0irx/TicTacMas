@@ -9,9 +9,9 @@ let board = new Array();
 let choice;
 let active_turn = "TIMUN_MAS";
 let messages = ["Permainan belum selesai",
-    "Permainan seri, timun mas belum bisa kabur dari Buto Ijo",
-    "Horeee!! Timun Mas berhasil kabur dari Buto Ijo",
-    "HAHAHAHAHA!! sayang sekali, Buto Ijo berhasil menangkap Timun Mas"]
+    "Permainan seri, Timun Mas belum bisa kabur dari Raksasa",
+    "Selamat! Timun Mas berhasil kabur dari Raksasa",
+    "HUAHAHAHA sayang sekali, Raksasa berhasil menangkap Timun Mas :("]
 
 let timunMasImgPath = './images/O.png';
 let butoIjoImgPath = './images/X.png';
@@ -20,6 +20,7 @@ let timunMasImg = new Image()
 let butoIjoImg = new Image()
 
 let blank_src = './images/blank.png'
+let blank_on_hover_src = './images/blank2.png'
 
 timunMasImg.src = timunMasImgPath;
 butoIjoImg.src = butoIjoImgPath;
@@ -28,20 +29,38 @@ butoIjoImg.src = butoIjoImgPath;
 let params = (new URL(document.location)).searchParams;
 let name = params.get('name');
 
+var moveSound = new Audio('./music/soundeffects.wav')
+var loseSound = new Audio('./music/lose.wav')
+var tieSound = new Audio('./music/drawresult.wav')
+
 function newboard() {
     for (let i = 0; i < BOARD_SIZE; i++) {
         board[i] = NOT_OCCUPIED;
         document.images[i].src = blank_src;
+
+        tile = document.images[i];
+        tile.onmouseover = function(){
+            this.src = blank_on_hover_src;
+            this.style.cursor="pointer";
+        };
+        tile.onmouseout = function(){
+            this.src = blank_src;
+            this.style.cursor="default";
+        };
     }
+
+    if (BOARD_SIZE == 25) {
+        document.getElementById("size5").disabled = true;;
+    }
+
     var turnInfo = document.getElementById("turnInfo");
     if (name === "butoIjo") {
         active_turn = "BUTO_IJO";
-        turnInfo.innerHTML = "Bagian Buto ijo Menyerang";
-        // sleep(10000);
-        moveButoIjo();
+        turnInfo.innerHTML = "Raksasa sebagai pemain pertama yang jalan";
+        setTimeout(moveButoIjo, 500);
     } else if (name === "timunMas") {
         active_turn = "TIMUN_MAS";
-        turnInfo.innerHTML = 'Mongoooo.....';
+        turnInfo.innerHTML = 'Timun Mas sebagai pemain pertama yang jalan, monggo..';
     }
 }
 
@@ -49,11 +68,16 @@ function makeMove(pieceMove) {
     if (!isGameOver(board) && board[pieceMove] === NOT_OCCUPIED) {
         board[pieceMove] = TIMUN_MAS;
         document.images[pieceMove].src = timunMasImgPath;
+        document.images[pieceMove].setAttribute("onmouseover", timunMasImgPath)
+        document.images[pieceMove].setAttribute("onmouseout", timunMasImgPath)
+        document.images[pieceMove].style.cursor="default";
+        moveSound.play();
+
         if (!isGameOver(board)) {
             var alert = document.getElementById("turnInfo");
             active_turn = "BUTO_IJO";
-            alert.innerHTML = "Bagian Buto ijo Menyerang"
-            moveButoIjo();
+            alert.innerHTML = "Giliran Raksasa mengejar"
+            setTimeout(moveButoIjo, 500);
         }
     }
 }
@@ -63,13 +87,17 @@ function moveButoIjo() {
     var move = choice;
     board[move] = BUTO_IJO;
     document.images[move].src = butoIjoImgPath;
+    document.images[move].setAttribute("onmouseover", butoIjoImgPath)
+    document.images[move].setAttribute("onmouseout", butoIjoImgPath)
+    document.images[move].style.cursor="default";
     choice = [];
     active_turn = "TIMUN_MAS"
     if (!isGameOver(board)) {
         var alert = document.getElementById("turnInfo");
-        alert.innerHTML = "Timun mas, pikirkan strategi baik untuk kabur";
+        alert.innerHTML = "Giliran Timun Mas untuk kabur dari Raksasa, pikirkan strategi yang terbaik!";
     }
 }
+
 function gameScore(currentBoard, depth) {
     var score = checkWinningCondition(currentBoard);
     if (score === 1) {
@@ -78,6 +106,8 @@ function gameScore(currentBoard, depth) {
         return depth - 10;
     } else if (score === 3) {
         return 10 - depth;
+    } else {
+        return 0;
     }
 }
 
@@ -182,7 +212,7 @@ function checkWinningCondition(currentBoard) {
     for (i = 0; i <= 4; i++) {
         if (currentBoard[i] === TIMUN_MAS && currentBoard[i + 5] === TIMUN_MAS && currentBoard[i + 10] === TIMUN_MAS && currentBoard[i + 15] === TIMUN_MAS && currentBoard[i + 20] === TIMUN_MAS)
             return 2;
-        if (currentBoard[i] === BUTO_IJO && currentBoard[i + 5] === BUTO_IJO && currentBoard[i + 20] === BUTO_IJO && currentBoard[i + 15] === BUTO_IJO && currentBoard[i + 20] === BUTO_IJO)
+        if (currentBoard[i] === BUTO_IJO && currentBoard[i + 5] === BUTO_IJO && currentBoard[i + 10] === BUTO_IJO && currentBoard[i + 15] === BUTO_IJO && currentBoard[i + 20] === BUTO_IJO)
             return 3;
     }
 
@@ -213,12 +243,14 @@ function isGameOver(board) {
         return false
     } else if (checkWinningCondition(board) === 1) {
         var turnInfo = document.getElementById("turnInfo");
+        tieSound.play();
         turnInfo.innerHTML = messages[1];
     } else if (checkWinningCondition(board) === 2) {
         var turnInfo = document.getElementById("turnInfo");
         turnInfo.innerHTML = messages[2];
     } else {
         var turnInfo = document.getElementById("turnInfo");
+        loseSound.play();
         turnInfo.innerHTML = messages[3];
     }
     return true;

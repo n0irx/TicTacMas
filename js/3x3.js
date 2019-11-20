@@ -9,9 +9,9 @@ let board = new Array()
 let choice;
 let active_turn = "TIMUN_MAS";
 let messages = ["Permainan belum selesai",
-    "Permainan seri, timun mas belum bisa kabur dari Buto Ijo",
-    "Horeee!! Timun Mas berhasil kabur dari Buto Ijo",
-    "HAHAHAHAHA!! sayang sekali, Buto Ijo berhasil menangkap Timun Mas"]
+    "Permainan seri, Timun Mas belum bisa kabur dari Raksasa",
+    "Selamat! Timun Mas berhasil kabur dari Raksasa",
+    "HUAHAHAHA sayang sekali, Raksasa berhasil menangkap Timun Mas :("]
 
 let timunMasImgPath = './images/O.png';
 let butoIjoImgPath = './images/X.png';
@@ -20,38 +20,50 @@ let timunMasImg = new Image()
 let butoIjoImg = new Image()
 
 let blank_src = './images/blank.png'
+let blank_on_hover_src = './images/blank2.png'
 
 timunMasImg.src = timunMasImgPath;
 butoIjoImg.src = butoIjoImgPath;
 
-function sleep(milliseconds) {
-    let timeStart = new Date().getTime();
-    while (true) {
-        let elapsedTime = new Date().getTime() - timeStart;
-        if (elapsedTime > milliseconds) {
-            break;
-        }
-    }
-}
-
 let params = (new URL(document.location)).searchParams;
 let name = params.get('name');
+<<<<<<< HEAD
 let size = params.get('size');
+=======
+
+var moveSound = new Audio('./music/soundeffects.wav')
+var loseSound = new Audio('./music/lose.wav')
+var tieSound = new Audio('./music/drawresult.wav')
+>>>>>>> 08650e712560d5893d9f35ca6abe9c3668e3abde
 
 function newboard() {
     for (let i = 0; i < BOARD_SIZE; i++) {
         board[i] = NOT_OCCUPIED;
         document.images[i].src = blank_src;
+
+        tile = document.images[i];
+        tile.onmouseover = function(){
+            this.src = blank_on_hover_src;
+            this.style.cursor="pointer";
+        };
+        tile.onmouseout = function(){
+            this.src = blank_src;
+            this.style.cursor="default";
+        };
     }
+
+    if (BOARD_SIZE == 9) {
+        document.getElementById("size3").disabled = true;;
+    }
+
     var turnInfo = document.getElementById("turnInfo");
     if (name === "butoIjo") {
         active_turn = "BUTO_IJO";
-        turnInfo.innerHTML = "Bagian Buto ijo Menyerang";
-        // sleep(10000);
-        moveButoIjo();
+        turnInfo.innerHTML = "Raksasa sebagai pemain pertama yang jalan";
+        setTimeout(moveButoIjo, 500);
     } else if (name === "timunMas") {
         active_turn = "TIMUN_MAS";
-        turnInfo.innerHTML = 'Mongoooo.....';
+        turnInfo.innerHTML = 'Timun Mas sebagai pemain pertama yang jalan, monggo..';
     }
 }
 
@@ -59,11 +71,16 @@ function makeMove(pieceMove) {
     if (!isGameOver(board) && board[pieceMove] === NOT_OCCUPIED) {
         board[pieceMove] = TIMUN_MAS;
         document.images[pieceMove].src = timunMasImgPath;
+        document.images[pieceMove].setAttribute("onmouseover", timunMasImgPath)
+        document.images[pieceMove].setAttribute("onmouseout", timunMasImgPath)
+        document.images[pieceMove].style.cursor="default";
+        moveSound.play();
+
         if (!isGameOver(board)) {
             var alert = document.getElementById("turnInfo");
             active_turn = "BUTO_IJO";
-            alert.innerHTML = "Bagian Buto ijo Menyerang"
-            moveButoIjo();
+            alert.innerHTML = "Giliran Raksasa mengejar"
+            setTimeout(moveButoIjo, 500);
         }
     }
 }
@@ -73,11 +90,14 @@ function moveButoIjo() {
     var move = choice;
     board[move] = BUTO_IJO;
     document.images[move].src = butoIjoImgPath;
+    document.images[move].setAttribute("onmouseover", butoIjoImgPath)
+    document.images[move].setAttribute("onmouseout", butoIjoImgPath)
+    document.images[move].style.cursor="default";
     choice = [];
     active_turn = "TIMUN_MAS"
     if (!isGameOver(board)) {
         var alert = document.getElementById("turnInfo");
-        alert.innerHTML = "Timun mas, pikirkan strategi baik untuk kabur";
+        alert.innerHTML = "Giliran Timun Mas untuk kabur dari Raksasa, pikirkan strategi yang terbaik!";
     }
 }
 
@@ -213,7 +233,6 @@ function checkWinningCondition(currentBoard) {
     return 1;
 }
 
-
 // Check for a winner.  Return
 //   0 if no winner or tie yet
 //   1 if it's a tie
@@ -224,20 +243,15 @@ function isGameOver(board) {
         return false
     } else if (checkWinningCondition(board) === 1) {
         var turnInfo = document.getElementById("turnInfo");
+        tieSound.play()
         turnInfo.innerHTML = messages[1];
     } else if (checkWinningCondition(board) === 2) {
         var turnInfo = document.getElementById("turnInfo");
         turnInfo.innerHTML = messages[2];
     } else {
         var turnInfo = document.getElementById("turnInfo");
+        loseSound.play();
         turnInfo.innerHTML = messages[3];
     }
     return true;
 }
-
-
-
-
-
-
-
