@@ -1,11 +1,11 @@
-var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-console.log(isChrome);
-if (!isChrome) {
-    $('#iframeAudio').remove()
-}
-else {
-    $('#playAudio').remove() //just to make sure that it will not have 2x audio in the background 
-}
+// var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+// console.log(isChrome);
+// if (!isChrome) {
+//     $('#iframeAudio').remove()
+// }
+// else {
+//     $('#playAudio').remove() //just to make sure that it will not have 2x audio in the background 
+// }
 // function setCookie(c_name, value, exdays) {
 //     var exdate = new Date();
 //     exdate.setDate(exdate.getDate() + exdays);

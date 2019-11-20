@@ -170,6 +170,15 @@ p {
   box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.music-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 35vw;
+  height: 10vh;
+  border-radius: 30px;
+}
 .white-container-2 {
   background-color: white;
   display: flex;

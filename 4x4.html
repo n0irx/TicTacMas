@@ -81,9 +81,11 @@
     </div>
     </div>
     </div>
-    <audio preload="auto" src="music/cublak.mp3" loop="true" autobuffer>
-        Unsupported in Firefox
-    </audio>
+    <div class="music-container">
+        <audio id="myaudio" allow='autoplay' controls autoplay loop>
+            <source src="music/cublak.mp3" type="audio/mp3">
+        </audio>
+    </div>
 </body>
 <script>
     function function3() {
