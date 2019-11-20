@@ -27,14 +27,10 @@ butoIjoImg.src = butoIjoImgPath;
 
 let params = (new URL(document.location)).searchParams;
 let name = params.get('name');
-<<<<<<< HEAD
-let size = params.get('size');
-=======
 
 var moveSound = new Audio('./music/soundeffects.wav')
 var loseSound = new Audio('./music/lose.wav')
 var tieSound = new Audio('./music/drawresult.wav')
->>>>>>> 08650e712560d5893d9f35ca6abe9c3668e3abde
 
 function newboard() {
     for (let i = 0; i < BOARD_SIZE; i++) {
@@ -42,13 +38,13 @@ function newboard() {
         document.images[i].src = blank_src;
 
         tile = document.images[i];
-        tile.onmouseover = function(){
+        tile.onmouseover = function () {
             this.src = blank_on_hover_src;
-            this.style.cursor="pointer";
+            this.style.cursor = "pointer";
         };
-        tile.onmouseout = function(){
+        tile.onmouseout = function () {
             this.src = blank_src;
-            this.style.cursor="default";
+            this.style.cursor = "default";
         };
     }
 
@@ -73,7 +69,7 @@ function makeMove(pieceMove) {
         document.images[pieceMove].src = timunMasImgPath;
         document.images[pieceMove].setAttribute("onmouseover", timunMasImgPath)
         document.images[pieceMove].setAttribute("onmouseout", timunMasImgPath)
-        document.images[pieceMove].style.cursor="default";
+        document.images[pieceMove].style.cursor = "default";
         moveSound.play();
 
         if (!isGameOver(board)) {
@@ -92,7 +88,7 @@ function moveButoIjo() {
     document.images[move].src = butoIjoImgPath;
     document.images[move].setAttribute("onmouseover", butoIjoImgPath)
     document.images[move].setAttribute("onmouseout", butoIjoImgPath)
-    document.images[move].style.cursor="default";
+    document.images[move].style.cursor = "default";
     choice = [];
     active_turn = "TIMUN_MAS"
     if (!isGameOver(board)) {
