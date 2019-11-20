@@ -44,6 +44,15 @@ p {
   color: #888;
 }
 
+.icon-2 {
+  font-size: 2.5rem;
+  color: white;
+}
+
+.icon-2:hover {
+  color: #888;
+}
+
 .modal {
   display: none;
   position: fixed;
@@ -224,9 +233,10 @@ p {
 
 .left-2 {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-evenly;
   width: 50%;
+  padding: 40px;
 }
 
 .right {
@@ -237,10 +247,9 @@ p {
 
 .right-2 {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
   width: 50%;
-  padding: 40px;
 }
 
 .selection {
@@ -376,4 +385,95 @@ p {
 
 #turnInfo {
   color: white;
+}
+
+/* Media for above 1600 in width */
+@media (min-width: 1601px) and (min-height: 700px) {
+
+}
+
+/* Media for average smartphones*/
+@media (max-width: 64em) {
+
+  .pohon-1 {
+    width: 100vw;
+  }
+
+  .pohon-2 {
+    display: none;
+  }
+
+  .pohon-2-2 {
+    display: none;
+  }
+
+  .semak-1 {
+    width: 100vw;
+  }
+
+  .semak-2 {
+    width: 100vw;
+  }
+
+  .white-container {
+    width: 90vw;
+    height: 40vh;
+  }
+
+  .white-container-2 {
+    margin-top: 50px;
+  }
+
+  .title {
+    font-size: 9rem;
+  }
+
+  .row {
+    width: 50vw;
+  }
+
+  .row-2 {
+    flex-direction: column;
+  }
+
+  .left-2 {
+    width: 60%;
+    padding: 40px;
+  }
+
+  .right-2 {
+    width: 100%;
+  }
+
+  .navbar-container {
+    width: 17vw;
+    padding-right: 18px;
+  }
+
+  .nav-button {
+    padding-top: 10px;
+    padding-left: 20px;
+  }
+
+  .icon {
+    font-size: 4rem;
+  }
+
+  .icon-2 {
+    font-size: 3.5rem;
+    color: white;
+  }
+
+  .modal-content {
+    margin: 22vh 4.5vw;
+  }
+
+  .button-story {
+    width: 30vw;
+  }
+}
+
+/* media for Iphone 5  or smaller phones*/
+@media (max-height: 600px) {
+
 }
