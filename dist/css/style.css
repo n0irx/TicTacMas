@@ -329,7 +329,7 @@ p {
 .size {
   display: flex;
   flex-direction: column;
-  justify-content: center;=
+  justify-content: center;
 }
 
 .board-content {
