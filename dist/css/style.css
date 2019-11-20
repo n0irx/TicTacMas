@@ -361,6 +361,11 @@ p {
   background-color: #F08732;
 }
 
+.button-size:disabled {
+  background-color: #F08732;
+  cursor: default;
+}
+
 .row-board {
   display: flex;
   flex-direction: row;
@@ -382,6 +387,10 @@ p {
   width: 12vw;
   background-color: #FFB13F;
   cursor: pointer;
+}
+
+.new-game:hover {
+  background-color: #F08732;
 }
 
 #turnInfo {

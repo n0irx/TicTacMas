@@ -49,6 +49,10 @@ function newboard() {
         };
     }
 
+    if (BOARD_SIZE == 16) {
+        document.getElementById("size4").disabled = true;;
+    }
+
     var turnInfo = document.getElementById("turnInfo");
     if (name === "butoIjo") {
         active_turn = "BUTO_IJO";
