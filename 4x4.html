@@ -21,35 +21,35 @@
         <div class="board-container">
             <div class="board-size">
                 <div class="size">
-                    <button onclick="function3()" class="button-size">3x3</button>
-                    <button onclick="function4()" class="button-size">4x4</button>
-                    <button onclick="function5()" class="button-size">5x5</button>
+                    <button id="size3" onclick="function3()" class="button-size">3x3</button>
+                    <button id="size4" onclick="function4()" class="button-size">4x4</button>
+                    <button id="size5" onclick="function5()" class="button-size">5x5</button>
                 </div>
             </div>
             <div class="board-content">
                 <div class="row-board">
-                    <img src="images/blank.png" width="100" height="100" onclick="makeMove(0)" />
-                    <img src="images/blank.png" width="100" height="100" onclick="makeMove(1)" />
-                    <img src="images/blank.png" width="100" height="100" onclick="makeMove(2)" />
-                    <img src="images/blank.png" width="100" height="100" onclick="makeMove(3)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(0)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(1)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(2)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(3)" />
                 </div>
                 <div class="row-board">
-                    <img src="images/blank.png" width="100" height="100" onclick="makeMove(4)" />
-                    <img src="images/blank.png" width="100" height="100" onclick="makeMove(5)" />
-                    <img src="images/blank.png" width="100" height="100" onclick="makeMove(6)" />
-                    <img src="images/blank.png" width="100" height="100" onclick="makeMove(7)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(4)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(5)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(6)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(7)" />
                 </div>
                 <div class="row-board">
-                    <img src="images/blank.png" width="100" height="100" onclick="makeMove(8)" />
-                    <img src="images/blank.png" width="100" height="100" onclick="makeMove(9)" />
-                    <img src="images/blank.png" width="100" height="100" onclick="makeMove(10)" />
-                    <img src="images/blank.png" width="100" height="100" onclick="makeMove(11)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(8)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(9)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(10)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(11)" />
                 </div>
                 <div class="row-board">
-                    <img src="images/blank.png" width="100" height="100" onclick="makeMove(12)" />
-                    <img src="images/blank.png" width="100" height="100" onclick="makeMove(13)" />
-                    <img src="images/blank.png" width="100" height="100" onclick="makeMove(14)" />
-                    <img src="images/blank.png" width="100" height="100" onclick="makeMove(15)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(12)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(13)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(14)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(15)" />
                 </div>
                 <input class="new-game" type="button" value="New Game" onclick="newboard()" />
             </div>

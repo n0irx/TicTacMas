@@ -9,9 +9,9 @@ let board = new Array()
 let choice;
 let active_turn = "TIMUN_MAS";
 let messages = ["Permainan belum selesai",
-    "Permainan seri, timun mas belum bisa kabur dari Buto Ijo",
-    "Horeee!! Timun Mas berhasil kabur dari Buto Ijo",
-    "HAHAHAHAHA!! sayang sekali, Buto Ijo berhasil menangkap Timun Mas"]
+    "Permainan seri, Timun Mas belum bisa kabur dari Raksasa",
+    "Selamat! Timun Mas berhasil kabur dari Raksasa",
+    "HUAHAHAHA sayang sekali, Raksasa berhasil menangkap Timun Mas :("]
 
 let timunMasImgPath = './images/O.png';
 let butoIjoImgPath = './images/X.png';
@@ -49,14 +49,18 @@ function newboard() {
         };
     }
 
+    if (BOARD_SIZE == 16) {
+        document.getElementById("size4").disabled = true;;
+    }
+
     var turnInfo = document.getElementById("turnInfo");
     if (name === "butoIjo") {
         active_turn = "BUTO_IJO";
-        turnInfo.innerHTML = "Bagian Buto ijo Menyerang";
+        turnInfo.innerHTML = "Raksasa sebagai pemain pertama yang jalan";
         setTimeout(moveButoIjo, 500);
     } else if (name === "timunMas") {
         active_turn = "TIMUN_MAS";
-        turnInfo.innerHTML = 'Mongoooo.....';
+        turnInfo.innerHTML = 'Timun Mas sebagai pemain pertama yang jalan, monggo..';
     }
 }
 
@@ -68,11 +72,11 @@ function makeMove(pieceMove) {
         document.images[pieceMove].setAttribute("onmouseout", timunMasImgPath)
         document.images[pieceMove].style.cursor="default";
         moveSound.play()
-        
+
         if (!isGameOver(board)) {
             var alert = document.getElementById("turnInfo");
             active_turn = "BUTO_IJO";
-            alert.innerHTML = "Bagian Buto ijo Menyerang"
+            alert.innerHTML = "Giliran Raksasa mengejar"
             setTimeout(moveButoIjo, 500);
         }
     }
@@ -90,7 +94,7 @@ function moveButoIjo() {
     active_turn = "TIMUN_MAS"
     if (!isGameOver(board)) {
         var alert = document.getElementById("turnInfo");
-        alert.innerHTML = "Timun mas, pikirkan strategi baik untuk kabur";
+        alert.innerHTML = "Giliran Timun Mas untuk kabur dari Raksasa, pikirkan strategi yang terbaik!";
     }
 }
 
