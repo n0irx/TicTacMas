@@ -398,9 +398,9 @@ p {
 }
 
 /* Media for above 1600 in width */
-@media (min-width: 1601px) and (min-height: 700px) {
+@media (min-width: 1025px)  {
 
-}
+
 
 /* Media for average smartphones*/
 @media (max-width: 64em) {
