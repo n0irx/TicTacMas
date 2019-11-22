@@ -28,6 +28,7 @@ butoIjoImg.src = butoIjoImgPath;
 
 let params = (new URL(document.location)).searchParams;
 let name = params.get('name');
+let level = params.get('level');
 
 var moveSound = new Audio('./music/soundeffects.wav')
 var loseSound = new Audio('./music/lose.wav');
@@ -133,6 +134,9 @@ function minimax(node, depth, alpha, beta) {
                 if (depth === 1) {
                     choice = move
                 }
+
+                if(level === 'easy') choice = move
+
             } else if (alpha >= beta) {
                 return alpha;
             }
@@ -149,6 +153,9 @@ function minimax(node, depth, alpha, beta) {
                 if (depth === 1) {
                     choice = move
                 }
+
+                if(level === 'easy') choice = move
+
             } else if (beta <= alpha) {
                 return beta;
             }

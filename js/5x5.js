@@ -127,12 +127,12 @@ function minimax(node, depth, alpha, beta) {
     var move, result, possibleGameResult;
     if (active_turn === "BUTO_IJO") {
 
-        randIndex = Math.floor(Math.random() * availableMoves.length); 
-        if(level === 'easy' && (Math.floor(Math.random() * 1) == 1)) {
-            choice = availableMoves[randIndex]
-            console.log(level)
-            return
-        }
+        // if(level === 'easy' && (Math.floor(Math.random() * 1) == 1)) {
+        //     randIndex = Math.floor(Math.random() * availableMoves.length); 
+        //     choice = availableMoves[randIndex]
+        //     console.log(level)
+        //     return
+        // }
 
         for (var i = 0; i < availableMoves.length; i++) {
             move = availableMoves[i];
@@ -141,9 +141,12 @@ function minimax(node, depth, alpha, beta) {
             node = undoMove(node, move);
             if (result > alpha) {
                 alpha = result
-                // if (depth === 1) {
+                if (depth === 1) {
                     choice = move
-                // }
+                }
+
+                if(level === 'easy') choice = move
+
             } else if (alpha >= beta) {
                 return alpha;
             }
@@ -157,9 +160,13 @@ function minimax(node, depth, alpha, beta) {
             node = undoMove(node, move);
             if (result < beta) {
                 beta = result
-                // if (depth === 1) {
+
+                if (depth === 1) {
                     choice = move
-                // }
+                }
+
+                if(level === 'easy') choice = move
+
             } else if (beta <= alpha) {
                 return beta;
             }
