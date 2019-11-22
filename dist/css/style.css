@@ -257,7 +257,7 @@ p {
 }
 
 .start {
-  margin-top: 40px;
+  margin-top: 20px;
   font-size: 20px;
   border: none;
   border-radius: 50px;
@@ -384,7 +384,7 @@ p {
   border: none;
   border-radius: 50px;
   padding: 1.3rem 4px;
-  width: 12vw;
+  width: 16vw;
   background-color: #FFB13F;
   cursor: pointer;
 }
@@ -398,9 +398,9 @@ p {
 }
 
 /* Media for above 1600 in width */
-@media (min-width: 1601px) and (min-height: 700px) {
+@media (min-width: 1025px)  {
 
-}
+
 
 /* Media for average smartphones*/
 @media (max-width: 64em) {
@@ -484,7 +484,7 @@ p {
   }
 
   .new-game {
-    width: 22vw;
+    width: 24vw;
   }
 
   .board-container {

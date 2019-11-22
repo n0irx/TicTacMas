@@ -84,6 +84,17 @@
                     </select>
                 </div>
             </div>
+            <div class="row">
+                <div class="left">
+                    <p>Tingkat Kesulitan:</p>
+                </div>
+                <div class="right">
+                    <select class="selection" id="level">
+                        <option value="easy">Mudah</option>
+                        <option value="hard">Sulit</option>
+                    </select>
+                </div>
+            </div>
             <button class="start" onclick="startFunction()">Mulai Permainan!</button>
             <!-- <audio controls loop>
                 <source src="music/cublak.mp3" type="audio/mpeg">
@@ -126,22 +137,46 @@
     function startFunction() {
         var player = document.getElementById("player").value;
         var size = document.getElementById("size").value;
-        if (player == "timunMas") {
-            if (size == 3) {
-                window.location.href = '3x3.html?name=timunMas';
-            } else if (size == 4) {
-                window.location.href = '4x4.html?name=timunMas';
-            } else if (size == 5) {
-                window.location.href = '5x5.html?name=timunMas';
+        var level = document.getElementById("level").value;
+        if (level == "easy"){
+            if (player == "timunMas") {
+                if (size == 3) {
+                    window.location.href = '3x3.html?name=timunMas?level=easy';
+                } else if (size == 4) {
+                    window.location.href = '4x4.html?name=timunMas?level=easy';
+                } else if (size == 5) {
+                    window.location.href = '5x5.html?name=timunMas?level=easy';
+                }
             }
-        } else if (player == "butoIjo") {
-            if (size == 3) {
-                window.location.href = '3x3.html?name=butoIjo';
-            } else if (size == 4) {
-                window.location.href = '4x4.html?name=butoIjo';
-            } else if (size == 5) {
-                window.location.href = '5x5.html?name=butoIjo';
+            else if (player == "butoIjo") {
+                if (size == 3) {
+                    window.location.href = '3x3.html?name=butoIjo?level=easy';
+                } else if (size == 4) {
+                    window.location.href = '4x4.html?name=butoIjo?level=easy';
+                } else if (size == 5) {
+                    window.location.href = '5x5.html?name=butoIjo?level=easy';
+                }
+            } 
+        }
+        else if (level == "hard"){
+            if (player == "timunMas") {
+                if (size == 3) {
+                    window.location.href = '3x3.html?name=timunMas?level=hard';
+                } else if (size == 4) {
+                    window.location.href = '4x4.html?name=timunMas?level=hard';
+                } else if (size == 5) {
+                    window.location.href = '5x5.html?name=timunMas?level=hard';
+                }
             }
+            else if (player == "butoIjo") {
+                if (size == 3) {
+                    window.location.href = '3x3.html?name=butoIjo?level=hard';
+                } else if (size == 4) {
+                    window.location.href = '4x4.html?name=butoIjo?level=hard';
+                } else if (size == 5) {
+                    window.location.href = '5x5.html?name=butoIjo?level=hard';
+                }
+            } 
         }
     }
 </script>

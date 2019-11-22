@@ -107,6 +107,8 @@ function gameScore(currentBoard, depth) {
         return depth - 10;
     } else if (score === 3) {
         return 10 - depth;
+    } else {
+        return 0;
     }
 }
 
