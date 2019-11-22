@@ -28,6 +28,7 @@ butoIjoImg.src = butoIjoImgPath;
 
 let params = (new URL(document.location)).searchParams;
 let name = params.get('name');
+let level = params.get('level');
 
 var moveSound = new Audio('./music/soundeffects.wav')
 var loseSound = new Audio('./music/lose.wav');
@@ -106,6 +107,8 @@ function gameScore(currentBoard, depth) {
         return depth - 10;
     } else if (score === 3) {
         return 10 - depth;
+    } else {
+        return 0;
     }
 }
 
@@ -133,6 +136,9 @@ function minimax(node, depth, alpha, beta) {
                 if (depth === 1) {
                     choice = move
                 }
+
+                if(level === 'easy') choice = move
+
             } else if (alpha >= beta) {
                 return alpha;
             }
@@ -149,6 +155,9 @@ function minimax(node, depth, alpha, beta) {
                 if (depth === 1) {
                     choice = move
                 }
+
+                if(level === 'easy') choice = move
+
             } else if (beta <= alpha) {
                 return beta;
             }
