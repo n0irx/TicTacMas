@@ -28,6 +28,7 @@ butoIjoImg.src = butoIjoImgPath;
 
 let params = (new URL(document.location)).searchParams;
 let name = params.get('name');
+let level = params.get('level');
 
 var moveSound = new Audio('./music/soundeffects.wav')
 var loseSound = new Audio('./music/lose.wav')
@@ -125,6 +126,14 @@ function minimax(node, depth, alpha, beta) {
     var availableMoves = getAvailableMoves(node);
     var move, result, possibleGameResult;
     if (active_turn === "BUTO_IJO") {
+
+        randIndex = Math.floor(Math.random() * availableMoves.length); 
+        if(level === 'easy' && (Math.floor(Math.random() * 1) == 1)) {
+            choice = availableMoves[randIndex]
+            console.log(level)
+            return
+        }
+
         for (var i = 0; i < availableMoves.length; i++) {
             move = availableMoves[i];
             possibleGameResult = getNewState(move, node);
@@ -132,9 +141,9 @@ function minimax(node, depth, alpha, beta) {
             node = undoMove(node, move);
             if (result > alpha) {
                 alpha = result
-                if (depth === 1) {
+                // if (depth === 1) {
                     choice = move
-                }
+                // }
             } else if (alpha >= beta) {
                 return alpha;
             }
@@ -148,9 +157,9 @@ function minimax(node, depth, alpha, beta) {
             node = undoMove(node, move);
             if (result < beta) {
                 beta = result
-                if (depth === 1) {
+                // if (depth === 1) {
                     choice = move
-                }
+                // }
             } else if (beta <= alpha) {
                 return beta;
             }
