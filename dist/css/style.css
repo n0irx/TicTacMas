@@ -1,10 +1,11 @@
 body {
   background-color: #0D442D;
   font-family: 'McLaren', cursive;
-  height:100%;
+  height: 100vh;
 }
 
 p {
+  line-height: 1.50;
   font-size: 20px;
 }
 
@@ -56,7 +57,7 @@ p {
 .modal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   left: 0;
   top: 0;
   width: 100%;
@@ -64,6 +65,8 @@ p {
   overflow: auto;
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0.4);
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .modal-content {
@@ -71,7 +74,6 @@ p {
   border-radius: 10px;
   margin: 9vh 7vw;
   border: 1px solid #aaaaaa;
-  width: 80%;
   text-align: center;
   padding: 50px;
 }
@@ -132,13 +134,12 @@ p {
 }
 
 .content-container-2 {
+  width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 70px;
-  position: relative;
-  z-index: 1;
+  align-items: flex-start;
+  overflow: auto;
 }
 
 .pohon-1 {
@@ -173,9 +174,8 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 45vw;
-  height: 60vh;
   border-radius: 30px;
+  padding: 100px;
   box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -185,10 +185,10 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 77vw;
   border-radius: 30px;
   box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 50px;
+  margin: 9vh 5vw;
 }
 
 .title {
@@ -197,6 +197,7 @@ p {
   font-size: 7rem;
   margin-top: 0;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .title-2 {
@@ -205,6 +206,7 @@ p {
   font-size: 7rem;
   margin-top: 0;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .row {
@@ -295,8 +297,7 @@ p {
   font-size: 20px;
   border: none;
   border-radius: 50px;
-  padding: 1.3rem 4px;
-  width: 20vw;
+  padding: 1.3rem 2rem;
   background-color: #FFB13F;
   cursor: pointer;
 }
@@ -383,8 +384,7 @@ p {
   font-size: 20px;
   border: none;
   border-radius: 50px;
-  padding: 1.3rem 4px;
-  width: 16vw;
+  padding: 1.3rem 2rem;
   background-color: #FFB13F;
   cursor: pointer;
 }
@@ -399,11 +399,23 @@ p {
 
 /* Media for above 1600 in width */
 @media (min-width: 1025px)  {
-
+}
 
 
 /* Media for average smartphones*/
 @media (max-width: 64em) {
+
+  p {
+    font-size: 12px;
+  }
+
+  select {
+    font-size: 12px !important;
+  }
+
+  .selection {
+    margin: 9px 0;
+  }
 
   .pohon-1 {
     width: 100vw;
@@ -426,16 +438,16 @@ p {
   }
 
   .white-container {
-    width: 90vw;
-    height: 40vh;
+    padding: 50px;
   }
 
   .white-container-2 {
-    margin-top: 50px;
+    padding: 20px;
+    margin: 8vh 5vw;
   }
 
   .row {
-    width: 50vw;
+    width: 60vw;
   }
 
   .row-2 {
@@ -452,51 +464,88 @@ p {
   }
 
   .navbar-container {
-    width: 17vw;
-    padding-right: 18px;
+    width: 30vw;
+    justify-content: flex-end;
+    margin-right: 20px;
   }
 
   .nav-button {
     padding-top: 10px;
-    padding-left: 20px;
+    margin: 0;
+  }
+
+  .fa-question {
+    padding-right: 20px;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+
+  .title-2 {
+    font-size: 3rem;
+  }
+
+  .start {
+    font-size: 12px;
+    padding: 1rem 2rem;
   }
 
   .icon {
-    font-size: 4rem;
+    font-size: 2rem;
   }
 
   .icon-2 {
-    font-size: 3.5rem;
-    color: white;
+    font-size: 1.8rem;
+  }
+
+  .close {
+    font-size: 30px;
   }
 
   .modal-content {
-    margin: 22vh 4.5vw;
+    margin: 10vh 3.5vw;
+    padding: 20px;
+  }
+
+  .subtitle {
+    font-size: 1.5em;
+  }
+
+  .subtitle-2 {
+    font-size: 1.5em;
   }
 
   .button-story {
-    width: 30vw;
+    font-size: 12px;
+    padding: 1rem 1.5rem;
   }
 
   .tile {
-    width: 150px;
-    height: 150px;
-  }
-
-  .new-game {
-    width: 24vw;
+    width: 60px;
+    height: 60px;
   }
 
   .board-container {
     flex-direction: column;
     align-items: center;
-    width: 60vw;
+    width: 80vw;
   }
 
   .board-size {
     justify-content: center;
     margin-right: 0px;
     width: 100%;
+  }
+
+  .button-size {
+    font-size: 12px;
+    padding: 1rem;
+  }
+
+  .new-game {
+    font-size: 12px;
+    padding: 1rem 1.5rem;
   }
 
   .size {
@@ -520,5 +569,4 @@ p {
 
 /* media for Iphone 5  or smaller phones*/
 @media (max-height: 600px) {
-
 }

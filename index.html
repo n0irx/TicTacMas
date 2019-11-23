@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Tic-Tac-Mas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="dist/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=McLaren&display=swap" rel="stylesheet">
 </head>
-
 <body>
     <div class="navbar-container">
         <a id="button" class="nav-button">
@@ -120,7 +119,7 @@
 
     // When the user clicks the button, open the modal
     btn.onclick = function () {
-        modal.style.display = "block";
+        modal.style.display = "flex";
     }
 
     // When the user clicks on <span> (x), close the modal
@@ -157,7 +156,7 @@
                 } else if (size == 5) {
                     window.location.href = '5x5.html?name=butoIjo&level=easy';
                 }
-            } 
+            }
         }
         else if (level == "hard"){
             if (player == "timunMas") {
@@ -177,7 +176,7 @@
                 } else if (size == 5) {
                     window.location.href = '5x5.html?name=butoIjo';
                 }
-            } 
+            }
         }
     }
 </script>
