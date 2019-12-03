@@ -53,11 +53,10 @@
             </div>
         </div>
     </div>
-    </div>
-    <audio preload="auto" src="music/cublak.mp3" loop="true" autobuffer>
-        Unsupported in Firefox
+    <audio id="myAudio" allow='autoplay' loop='loop' loop>
+        <source src="music/cublak.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
     </audio>
-
     <script>
         function function3() {
             let params = (new URL(document.location)).searchParams;
