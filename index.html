@@ -13,8 +13,8 @@
 
 <body>
     <div class="navbar-container">
-        <a id="button-audio" onclick="audioFunction()" class=" nav-button">
-            <p class="icon"><i class="fa fa-music"></i></p>
+        <a id="button-audio" onclick="audioFunction()" class="nav-button">
+            <p id="icon-music" class="icon"><i class="fa fa-music"></i></p>
         </a>
         <a id="button" class="nav-button">
             <p class="icon"><i class="fa fa-question"></i></p>
@@ -144,17 +144,20 @@
     }
 
     var x = document.getElementById("myAudio");
-    x.play();
     var checkAudio = true;
+    var property = document.getElementById("icon-music");
     function audioFunction() {
         if (checkAudio === true) {
+            property.style.color = "#FFB13F";
             x.play();
             checkAudio = false;
         } else if (checkAudio === false) {
+            property.style.color = "#FFFFFF";
             x.pause();
             checkAudio = true;
         }
     }
+
 
     function startFunction() {
         var player = document.getElementById("player").value;
