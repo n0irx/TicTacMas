@@ -68,6 +68,18 @@
     </audio>
 </body>
 <script>
+    var x = document.getElementById("myAudio");
+    x.play();
+    var checkAudio = true;
+    function audioFunction() {
+        if (checkAudio === true) {
+            x.play();
+            checkAudio = false;
+        } else if (checkAudio === false) {
+            x.pause();
+            checkAudio = true;
+        }
+    }
     function function3() {
         let params = (new URL(document.location)).searchParams;
         let name = params.get('name');
