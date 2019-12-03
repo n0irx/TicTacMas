@@ -143,18 +143,18 @@
         }
     }
 
-    // var x = document.getElementById("myAudio");
-    // x.play();
-    // var checkAudio = true;
-    // function audioFunction() {
-    //     if (checkAudio === true) {
-    //         x.play();
-    //         checkAudio = false;
-    //     } else if (checkAudio === false) {
-    //         x.pause();
-    //         checkAudio = true;
-    //     }
-    // }
+    var x = document.getElementById("myAudio");
+    x.play();
+    var checkAudio = true;
+    function audioFunction() {
+        if (checkAudio === true) {
+            x.play();
+            checkAudio = false;
+        } else if (checkAudio === false) {
+            x.pause();
+            checkAudio = true;
+        }
+    }
 
     function startFunction() {
         var player = document.getElementById("player").value;
