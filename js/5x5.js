@@ -34,6 +34,20 @@ var moveSound = new Audio('./music/soundeffects.wav')
 var loseSound = new Audio('./music/lose.wav')
 var tieSound = new Audio('./music/drawresult.wav')
 
+function validTurn() {
+    X_sum = 0
+    O_sum = 0
+    for(var i = 0; i < BOARD_SIZE; i++) {
+        if(board[i] == 'X') {
+            X_sum++;
+        } else if (board[i] == "O"){
+            O_sum++;
+        }
+    }
+    isValid =  (X_sum + O_sum) % 2 == 0;
+    return isValid
+}
+
 function newboard() {
     for (let i = 0; i < BOARD_SIZE; i++) {
         board[i] = NOT_OCCUPIED;
@@ -66,6 +80,11 @@ function newboard() {
 }
 
 function makeMove(pieceMove) {
+    
+    if(!validTurn()) {
+        return 
+    }
+
     if (!isGameOver(board) && board[pieceMove] === NOT_OCCUPIED) {
         board[pieceMove] = TIMUN_MAS;
         document.images[pieceMove].src = timunMasImgPath;
