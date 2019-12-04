@@ -136,7 +136,7 @@ function minimax(node, depth, alpha, beta) {
     if (checkWinningCondition(node) === 1 ||
         checkWinningCondition(node) === 2 ||
         checkWinningCondition(node) === 3 ||
-        depth === 6 || (level == 'easy' && depth == 1 && (Math.random() < 0.01) )) {
+        depth === 6 || (level == 'easy' && depth == 1 && (Math.random() < 0.10) )) {
         return gameScore(node, depth);
     }
 
