@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Tic-Tac-Mas</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=McLaren&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="navbar-container">
         <a id="button" class="nav-button">
@@ -41,13 +43,13 @@
                     simbol dalam satu deret, atau fokus pada pembuatan tiga simbol dalam satu deretnya sendiri.
                     Idealnya, seorang pemain dapat melakukan keduanya secara bersamaan.</p>
                 <p><span class="bold">4. Teruslah bergiliran menggambar simbol masing-masing sampai salah satu pemain
-                    telah menggambar tiga simbol dalam satu deret atau sampai tidak ada pemain yang dapat
-                    menang.</span> Pemain yang pertama kali menggambar tiga simbolnya dalam satu deret, entah secara
+                        telah menggambar tiga simbol dalam satu deret atau sampai tidak ada pemain yang dapat
+                        menang.</span> Pemain yang pertama kali menggambar tiga simbolnya dalam satu deret, entah secara
                     horizontal, vertikal, ataupun diagonal, menjadi pemenang permainan. Namun, jika kedua pemain
                     menggunakan strategi optimal, kemungkinan besar tidak akan ada pemenang karena kalian akan saling
                     memblokir kesempatan masing-masing untuk membuat tiga simbol dalam satu deret.</p>
                 <p><span class="bold">5. Teruslah berlatih. Berlawanan dengan kepercayaan umum, tic-tac-toe bukanlah
-                    sepenuhnya permainan peluang.</span> Ada beberapa strategi yang dapat membantu Anda
+                        sepenuhnya permainan peluang.</span> Ada beberapa strategi yang dapat membantu Anda
                     mengoptimalkan kemampuan Anda dan membuat Anda menjadi pemain tic-tac-toe yang ahli. Jika Anda terus
                     bermain, Anda akan segera mempelajari semua trik untuk memastikan Anda memenangkan setiap permainan
                     — atau, setidaknya, Anda akan mempelajari trik-trik untuk memastikan Anda tidak pernah kalah.</p>
@@ -138,7 +140,7 @@
         var player = document.getElementById("player").value;
         var size = document.getElementById("size").value;
         var level = document.getElementById("level").value;
-        if (level == "easy"){
+        if (level == "easy") {
             if (player == "timunMas") {
                 if (size == 3) {
                     window.location.href = '3x3.html?name=timunMas&level=easy';
@@ -158,7 +160,7 @@
                 }
             }
         }
-        else if (level == "hard"){
+        else if (level == "hard") {
             if (player == "timunMas") {
                 if (size == 3) {
                     window.location.href = '3x3.html?name=timunMas';
@@ -180,4 +182,5 @@
         }
     }
 </script>
+
 </html>
