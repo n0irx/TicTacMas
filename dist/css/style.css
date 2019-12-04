@@ -397,6 +397,13 @@ p {
   color: white;
 }
 
+.footer-text{
+  display: flex;
+  color: #F08732;
+  font-size: 0.7rem;
+  
+}
+
 /* Media for above 1600 in width */
 @media (min-width: 1025px)  {
   .title-2 {
@@ -407,6 +414,13 @@ p {
   .tile{
     width: 80px;
     height: 80px;
+  }
+
+  .footer-text{
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    position: absolute
+    
   }
 }
 
@@ -574,6 +588,15 @@ p {
   #turnInfo {
     text-align: center;
   }
+
+  .footer-text{
+    display: flex;
+    font-size: 0.5rem;
+    text-align: center;
+    justify-content: center;
+    
+  }
+
 }
 
 /* media for Iphone 5  or smaller phones*/
