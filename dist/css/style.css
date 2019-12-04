@@ -399,11 +399,20 @@ p {
 
 /* Media for above 1600 in width */
 @media (min-width: 1025px)  {
+  .title-2 {
+    font-size: 7rem;
+    margin-top: 8vh;
+    margin-bottom: 20px;
+  }
+  .tile{
+    width: 80px;
+    height: 80px;
+  }
 }
 
 
 /* Media for average smartphones*/
-@media (max-width: 64em) {
+@media (min-device-width: 320px) and (max-device-width: 812px) {
 
   p {
     font-size: 12px;
