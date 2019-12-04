@@ -27,6 +27,7 @@ butoIjoImg.src = butoIjoImgPath;
 
 let params = (new URL(document.location)).searchParams;
 let name = params.get('name');
+let level = params.get('level');
 
 var moveSound = new Audio('./music/soundeffects.wav')
 var loseSound = new Audio('./music/lose.wav')
@@ -130,7 +131,8 @@ function gameScore(currentBoard, depth) {
 function minimax(node, depth, alpha, beta) {
     if (checkWinningCondition(node) === 1 ||
         checkWinningCondition(node) === 2 ||
-        checkWinningCondition(node) === 3) {
+        checkWinningCondition(node) === 3 ||
+        (level == 'easy' && depth == 1 && (Math.random() < 0.25) )) {
         return gameScore(node, depth);
     }
 

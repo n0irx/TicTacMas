@@ -135,7 +135,7 @@ function minimax(node, depth, alpha, beta) {
     if (checkWinningCondition(node) === 1 ||
         checkWinningCondition(node) === 2 ||
         checkWinningCondition(node) === 3 ||
-        depth === 6) {
+        depth === 6 || (level == 'easy' && depth == 1 && (Math.random() < 0.10) )) {
         return gameScore(node, depth);
     }
 
@@ -155,9 +155,6 @@ function minimax(node, depth, alpha, beta) {
                 if (depth === 1) {
                     choice = move
                 }
-
-                if(level === 'easy') choice = move
-
             } else if (alpha >= beta) {
                 return alpha;
             }
@@ -174,9 +171,6 @@ function minimax(node, depth, alpha, beta) {
                 if (depth === 1) {
                     choice = move
                 }
-
-                if(level === 'easy') choice = move
-
             } else if (beta <= alpha) {
                 return beta;
             }
