@@ -31,6 +31,7 @@ let name = params.get('name');
 var moveSound = new Audio('./music/soundeffects.wav')
 var loseSound = new Audio('./music/lose.wav')
 var tieSound = new Audio('./music/drawresult.wav')
+var winSound = new Audio('./music/win.wav')
 
 function validTurn() {
     X_sum = 0
@@ -262,6 +263,7 @@ function isGameOver(board) {
         turnInfo.innerHTML = messages[1];
     } else if (checkWinningCondition(board) === 2) {
         var turnInfo = document.getElementById("turnInfo");
+        winSound.play();
         turnInfo.innerHTML = messages[2];
     } else {
         var turnInfo = document.getElementById("turnInfo");

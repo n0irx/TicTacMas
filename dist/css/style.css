@@ -401,6 +401,8 @@ p {
   display: flex;
   color: #F08732;
   font-size: 0.7rem;
+
+  
   
 }
 
@@ -422,6 +424,7 @@ p {
     position: absolute
     
   }
+
 }
 
 
