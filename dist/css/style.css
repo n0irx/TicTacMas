@@ -150,11 +150,27 @@ p {
   width: 47vw;
 }
 
+.pohon-1-board {
+  z-index: -1;
+  position: absolute;
+  left: -20;
+  top: -70;
+  width: 47vw;
+}
+
 .pohon-2 {
   z-index: -1;
   position: absolute;
   right: 0;
   top: 0;
+  width: 48vw;
+}
+
+.pohon-2-board {
+  z-index: -1;
+  position: absolute;
+  right: 0;
+  top: -70;
   width: 48vw;
 }
 
@@ -401,9 +417,6 @@ p {
   display: flex;
   color: #F08732;
   font-size: 0.7rem;
-
-  
-  
 }
 
 /* Media for above 1600 in width */
@@ -423,6 +436,25 @@ p {
     padding-bottom: 1rem;
     position: absolute
     
+  }
+
+  a:link {
+    text-decoration: none;
+  }
+  
+  a:visited {
+    text-decoration: none;
+  }
+  a{
+    color:#F08732;
+  }
+
+  a:hover{
+    text-decoration: underline;
+  }
+
+  a:active{
+    text-decoration: underline;
   }
 
 }
