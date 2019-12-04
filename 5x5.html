@@ -4,7 +4,6 @@
     <title>Tic-Tac-Mas</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src='js/5x5.js'></script>
-    <!-- <script src="js/musicPlayer.js"></script> -->
     <link rel="stylesheet" href="dist/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -14,6 +13,15 @@
 
 <body onload="newboard();">
     <div class="navbar-container">
+        <a id="button-audio" onclick="audioFunction()" class=" nav-button">
+            <p id="icon-music" class="icon"><i class="fa fa-music"></i></p>
+        </a>
+        <a id="button" class="nav-button">
+            <p class="icon"><i class="fa fa-question"></i></p>
+        </a>
+        <a href="./about.html" class="nav-button">
+            <p class="icon"><i class="fa fa-gamepad"></i></p>
+        </a>
         <a href="./index.html" class="nav-button">
             <p class="icon"><i class="fa fa-home"></i></p>
         </a>
@@ -80,8 +88,26 @@
     </audio> -->
     <img class="pohon-1-board" src="dist/assets/pohon-1.png" />
     <img class="pohon-2-board" src="dist/assets/pohon-2.png" />
+    <audio id="myAudio" allow='autoplay' loop='loop' loop>
+        <source src="music/cublak.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 </body>
 <script>
+    var x = document.getElementById("myAudio");
+    var checkAudio = true;
+    var property = document.getElementById("icon-music");
+    function audioFunction() {
+        if (checkAudio === true) {
+            property.style.color = "#FFB13F";
+            x.play();
+            checkAudio = false;
+        } else if (checkAudio === false) {
+            property.style.color = "#FFFFFF";
+            x.pause();
+            checkAudio = true;
+        }
+    }
     function function3() {
         let params = (new URL(document.location)).searchParams;
         let name = params.get('name');

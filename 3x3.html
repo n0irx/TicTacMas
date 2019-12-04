@@ -1,4 +1,5 @@
 <html>
+<!DOCTYPE html>
 
 <head>
     <title>Tic-Tac-Mas</title>
@@ -13,6 +14,15 @@
 
 <body onload="newboard();">
     <div class="navbar-container">
+        <a id="button-audio" onclick="audioFunction()" class=" nav-button">
+            <p id="icon-music" class="icon"><i class="fa fa-music"></i></p>
+        </a>
+        <a id="button" class="nav-button">
+            <p class="icon"><i class="fa fa-question"></i></p>
+        </a>
+        <a href="./about.html" class="nav-button">
+            <p class="icon"><i class="fa fa-gamepad"></i></p>
+        </a>
         <a href="./index.html" class="nav-button">
             <p class="icon"><i class="fa fa-home"></i></p>
         </a>
@@ -51,43 +61,62 @@
         </div>
     </div>
     <p class=footer-text>&copy; copyright 2019. all rights reserved.
-        <br>Darin Amanda - M. Fachry - M. Nadhirsyah - Roshani Ayu</p>
-    </p>
-    </div>
-    <audio preload="auto" src="music/cublak.mp3" loop="true" autobuffer>
-        Unsupported in Firefox
+            <br>Darin Amanda - M. Fachry - M. Nadhirsyah - Roshani Ayu</p>
+        </p>
+        </div>
+        <audio preload="auto" src="music/cublak.mp3" loop="true" autobuffer>
+            Unsupported in Firefox
+        </audio>
+        <img class="pohon-1-board" src="dist/assets/pohon-1.png" />
+        <img class="pohon-2-board" src="dist/assets/pohon-2.png" />
+    </body>
+    <audio id="myAudio" allow='autoplay' loop='loop' loop>
+        <source src="music/cublak.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
     </audio>
-    <img class="pohon-1-board" src="dist/assets/pohon-1.png" />
-    <img class="pohon-2-board" src="dist/assets/pohon-2.png" />
+    <script>
+        var x = document.getElementById("myAudio");
+        var checkAudio = true;
+        var property = document.getElementById("icon-music");
+        function audioFunction() {
+            if (checkAudio === true) {
+                property.style.color = "#FFB13F";
+                x.play();
+                checkAudio = false;
+            } else if (checkAudio === false) {
+                property.style.color = "#FFFFFF";
+                x.pause();
+                checkAudio = true;
+            }
+        }
+        function function3() {
+            let params = (new URL(document.location)).searchParams;
+            let name = params.get('name');
+            if (name === "butoIjo") {
+                window.location.href = '3x3.html?name=butoIjo';
+            } else if (name === "timunMas") {
+                window.location.href = '3x3.html?name=timunMas';
+            }
+        }
+        function function4() {
+            let params = (new URL(document.location)).searchParams;
+            let name = params.get('name');
+            if (name === "butoIjo") {
+                window.location.href = '4x4.html?name=butoIjo';
+            } else if (name === "timunMas") {
+                window.location.href = '4x4.html?name=timunMas';
+            }
+        }
+        function function5() {
+            let params = (new URL(document.location)).searchParams;
+            let name = params.get('name');
+            if (name === "butoIjo") {
+                window.location.href = '5x5.html?name=butoIjo';
+            } else if (name === "timunMas") {
+                window.location.href = '5x5.html?name=timunMas';
+            }
+        }
+    </script>
 </body>
-<script>
-    function function3() {
-        let params = (new URL(document.location)).searchParams;
-        let name = params.get('name');
-        if (name === "butoIjo") {
-            window.location.href = '3x3.html?name=butoIjo';
-        } else if (name === "timunMas") {
-            window.location.href = '3x3.html?name=timunMas';
-        }
-    }
-    function function4() {
-        let params = (new URL(document.location)).searchParams;
-        let name = params.get('name');
-        if (name === "butoIjo") {
-            window.location.href = '4x4.html?name=butoIjo';
-        } else if (name === "timunMas") {
-            window.location.href = '4x4.html?name=timunMas';
-        }
-    }
-    function function5() {
-        let params = (new URL(document.location)).searchParams;
-        let name = params.get('name');
-        if (name === "butoIjo") {
-            window.location.href = '5x5.html?name=butoIjo';
-        } else if (name === "timunMas") {
-            window.location.href = '5x5.html?name=timunMas';
-        }
-    }
-</script>
 
 </html>
