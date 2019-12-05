@@ -63,4 +63,20 @@
 		Your browser does not support the audio element.
 	</audio>
 </body>
+<script>
+	var x = document.getElementById("myAudio");
+    var checkAudio = true;
+    var property = document.getElementById("icon-music");
+    function audioFunction() {
+        if (checkAudio === true) {
+            property.style.color = "#F08732";
+            x.play();
+            checkAudio = false;
+        } else if (checkAudio === false) {
+            property.style.color = "#FFFFFF";
+            x.pause();
+            checkAudio = true;
+        }
+    }
+</script>
 </html>
