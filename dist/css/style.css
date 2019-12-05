@@ -414,9 +414,13 @@ p {
 }
 
 .footer-text{
-  display: flex;
-  color: white;
   font-size: 0.7rem;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: left;
 }
 
 /* Media for above 1600 in width */
@@ -435,13 +439,13 @@ p {
     padding-left: 1rem;
     padding-bottom: 1rem;
     position: absolute
-    
+
   }
 
   a:link {
     text-decoration: none;
   }
-  
+
   a:visited {
     text-decoration: none;
   }
@@ -633,7 +637,7 @@ p {
     font-size: 0.5rem;
     text-align: center;
     justify-content: center;
-    
+
   }
 
 }
