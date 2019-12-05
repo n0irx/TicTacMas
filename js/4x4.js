@@ -33,6 +33,7 @@ let level = params.get('level');
 var moveSound = new Audio('./music/soundeffects.wav')
 var loseSound = new Audio('./music/lose.wav');
 var tieSound = new Audio('./music/drawresult.wav')
+var winSound = new Audio ('./music/win.wav')
 
 function validTurn() {
     X_sum = 0
@@ -135,7 +136,7 @@ function minimax(node, depth, alpha, beta) {
     if (checkWinningCondition(node) === 1 ||
         checkWinningCondition(node) === 2 ||
         checkWinningCondition(node) === 3 ||
-        depth === 6) {
+        depth === 6 || (level == 'easy' && depth == 1 && (Math.random() < 0.10) )) {
         return gameScore(node, depth);
     }
 
@@ -155,9 +156,6 @@ function minimax(node, depth, alpha, beta) {
                 if (depth === 1) {
                     choice = move
                 }
-
-                if(level === 'easy') choice = move
-
             } else if (alpha >= beta) {
                 return alpha;
             }
@@ -174,9 +172,6 @@ function minimax(node, depth, alpha, beta) {
                 if (depth === 1) {
                     choice = move
                 }
-
-                if(level === 'easy') choice = move
-
             } else if (beta <= alpha) {
                 return beta;
             }
@@ -273,6 +268,7 @@ function isGameOver(board) {
         turnInfo.innerHTML = messages[1];
     } else if (checkWinningCondition(board) === 2) {
         var turnInfo = document.getElementById("turnInfo");
+        winSound.play();
         turnInfo.innerHTML = messages[2];
     } else {
         var turnInfo = document.getElementById("turnInfo");

@@ -150,11 +150,27 @@ p {
   width: 47vw;
 }
 
+.pohon-1-board {
+  z-index: -1;
+  position: absolute;
+  left: -20;
+  top: -70;
+  width: 47vw;
+}
+
 .pohon-2 {
   z-index: -1;
   position: absolute;
   right: 0;
   top: 0;
+  width: 48vw;
+}
+
+.pohon-2-board {
+  z-index: -1;
+  position: absolute;
+  right: 0;
+  top: -70;
   width: 48vw;
 }
 
@@ -397,13 +413,55 @@ p {
   color: white;
 }
 
+.footer-text{
+  display: flex;
+  color: white;
+  font-size: 0.7rem;
+}
+
 /* Media for above 1600 in width */
 @media (min-width: 1025px)  {
+  .title-2 {
+    font-size: 7rem;
+    margin-top: 8vh;
+    margin-bottom: 20px;
+  }
+  .tile{
+    width: 80px;
+    height: 80px;
+  }
+
+  .footer-text{
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    position: absolute
+    
+  }
+
+  a:link {
+    text-decoration: none;
+  }
+  
+  a:visited {
+    text-decoration: none;
+  }
+  a{
+    color:#F08732;
+  }
+
+  a:hover{
+    text-decoration: underline;
+  }
+
+  a:active{
+    text-decoration: underline;
+  }
+
 }
 
 
 /* Media for average smartphones*/
-@media (max-width: 64em) {
+@media (min-device-width: 320px) and (max-device-width: 812px) {
 
   p {
     font-size: 12px;
@@ -569,6 +627,15 @@ p {
   #turnInfo {
     text-align: center;
   }
+
+  .footer-text{
+    display: flex;
+    font-size: 0.5rem;
+    text-align: center;
+    justify-content: center;
+    
+  }
+
 }
 
 /* media for Iphone 5  or smaller phones*/

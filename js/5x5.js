@@ -33,6 +33,7 @@ let level = params.get('level');
 var moveSound = new Audio('./music/soundeffects.wav')
 var loseSound = new Audio('./music/lose.wav')
 var tieSound = new Audio('./music/drawresult.wav')
+var winSound = new Audio('./music/win.wav')
 
 function validTurn() {
     X_sum = 0
@@ -135,7 +136,7 @@ function minimax(node, depth, alpha, beta) {
     if (checkWinningCondition(node) === 1 ||
         checkWinningCondition(node) === 2 ||
         checkWinningCondition(node) === 3 ||
-        depth == 6) {
+        depth === 6 || (level == 'easy' && depth == 1 && (Math.random() < 0.01) )) {
         return gameScore(node, depth);
     }
 
@@ -145,14 +146,6 @@ function minimax(node, depth, alpha, beta) {
     var availableMoves = getAvailableMoves(node);
     var move, result, possibleGameResult;
     if (active_turn === "BUTO_IJO") {
-
-        // if(level === 'easy' && (Math.floor(Math.random() * 1) == 1)) {
-        //     randIndex = Math.floor(Math.random() * availableMoves.length); 
-        //     choice = availableMoves[randIndex]
-        //     console.log(level)
-        //     return
-        // }
-
         for (var i = 0; i < availableMoves.length; i++) {
             move = availableMoves[i];
             possibleGameResult = getNewState(move, node);
@@ -282,6 +275,7 @@ function isGameOver(board) {
         turnInfo.innerHTML = messages[1];
     } else if (checkWinningCondition(board) === 2) {
         var turnInfo = document.getElementById("turnInfo");
+        winSound.play();
         turnInfo.innerHTML = messages[2];
     } else {
         var turnInfo = document.getElementById("turnInfo");
