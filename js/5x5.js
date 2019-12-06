@@ -36,7 +36,7 @@ var tieSound = new Audio('./music/drawresult.wav')
 var winSound = new Audio('./music/win.wav')
 
 function validTurn() {
-    X_sum = 0
+    X_sum = name == "butoIjo" ? 1 : 0;
     O_sum = 0
     for(var i = 0; i < BOARD_SIZE; i++) {
         if(board[i] == 'X') {
@@ -156,9 +156,6 @@ function minimax(node, depth, alpha, beta) {
                 if (depth === 1) {
                     choice = move
                 }
-
-                if(level === 'easy') choice = move
-
             } else if (alpha >= beta) {
                 return alpha;
             }
@@ -172,13 +169,9 @@ function minimax(node, depth, alpha, beta) {
             node = undoMove(node, move);
             if (result < beta) {
                 beta = result
-
                 if (depth === 1) {
                     choice = move
                 }
-
-                if(level === 'easy') choice = move
-
             } else if (beta <= alpha) {
                 return beta;
             }
