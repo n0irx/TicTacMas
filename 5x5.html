@@ -167,29 +167,56 @@
     function function3() {
         let params = (new URL(document.location)).searchParams;
         let name = params.get('name');
-        if (name === "butoIjo") {
-            window.location.href = '3x3.html?name=butoIjo';
-        } else if (name === "timunMas") {
-            window.location.href = '3x3.html?name=timunMas';
-        }
+        let level = params.get('level')
+        if (level === "easy"){
+            if (name === "butoIjo") {
+                window.location.href = '3x3.html?name=butoIjo&level=easy';
+            }else if (name === "timunMas") {
+                window.location.href = '3x3.html?name=timunMas&level=easy';
+            }
+        }else if (level === "hard"){
+            if (name === "butoIjo") {
+                window.location.href = '3x3.html?name=butoIjo';
+            }else if (name === "timunMas") {
+                window.location.href = '3x3.html?name=timunMas';
+            }
+        }  
     }
     function function4() {
         let params = (new URL(document.location)).searchParams;
         let name = params.get('name');
-        if (name === "butoIjo") {
-            window.location.href = '4x4.html?name=butoIjo';
-        } else if (name === "timunMas") {
-            window.location.href = '4x4.html?name=timunMas';
-        }
+        let level = params.get('level')
+        if (level === "easy"){
+            if (name === "butoIjo") {
+                window.location.href = '4x4.html?name=butoIjo&level=easy';
+            }else if (name === "timunMas") {
+                window.location.href = '4x4.html?name=timunMas&level=easy';
+            }
+        }else if (level === "hard"){
+            if (name === "butoIjo") {
+                window.location.href = '4x4.html?name=butoIjo';
+            }else if (name === "timunMas") {
+                window.location.href = '4x4.html?name=timunMas';
+            }
+        }  
     }
     function function5() {
         let params = (new URL(document.location)).searchParams;
         let name = params.get('name');
-        if (name === "butoIjo") {
-            window.location.href = '5x5.html?name=butoIjo';
-        } else if (name === "timunMas") {
-            window.location.href = '5x5.html?name=timunMas';
-        }
+        let level = params.get('level');
+        if (level === "easy"){
+            if (name === "butoIjo") {
+                window.location.href = '5x5.html?name=butoIjo&level=easy';
+            }else if (name === "timunMas") {
+                window.location.href = '5x5.html?name=timunMas&level=easy';
+            }
+        }else {
+            if (name === "butoIjo") {
+                window.location.href = '5x5.html?name=butoIjo';
+            }else if (name === "timunMas") {
+                window.location.href = '5x5.html?name=timunMas';
+            }
+        }  
     }
 </script>
 
