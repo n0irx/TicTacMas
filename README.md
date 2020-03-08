@@ -1,8 +1,8 @@
 # TicTacMas
 
-**Proyek Akhir Kelompok astaga.ai Mata Kuliah Sistem Cerdas, Fakultas Ilmu Komputer, Universitas Indonesia, Semester Gasal 2019/2020**
+**Intelligence System Project by astaga.ai. Faculty of Computer Science, Universitas Indonesia**
 
-This project is inspired by the classic `Tic Tac Toe` game. The game is designed with Indonesian folklore `Timus Mas` as the theme of the game.
+This project is inspired by the classic `Tic Tac Toe` game. The game is designed with Indonesian folklore `Timun Mas` as the theme of the game.
 
 A `Minimax` algorithm is implemented in this project and we also apply `Alpha-Beta Pruning`. We also create this for 3x3, 4x4, and 5x5 board game that you can choose, with 3 different difficulities: easy, medium, and hard.
 
