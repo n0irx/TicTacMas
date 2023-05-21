@@ -12,8 +12,7 @@ A Minimax algorithm is implemented in this project and we also apply Alpha-Beta 
 
 1. [Muhammad Fachry Nataprawira](https://github.com/prfctblack)
 2. [Darin Amanda Zakiya](https://github.com/darinamanda)
-3. [Muhammad Nadhirsyah Indra](https://github.com/nadhirsyah)
-4. [Roshani Ayu Pranasti](https://github.com/roshaniayu)
+3. [Roshani Ayu Pranasti](https://github.com/roshaniayu)
 
 ## Link
 
